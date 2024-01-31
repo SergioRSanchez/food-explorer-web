@@ -23,7 +23,7 @@ export const Container = styled.header`
     display: none;
   } */
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     padding: 24px 123px;
 
     gap: 32px;
