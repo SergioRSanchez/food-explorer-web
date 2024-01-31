@@ -33,6 +33,23 @@ export const Form = styled.form`
     display: none;
   }
 
+  div {
+    margin-bottom: 32px;
+  }
+
+  > label {
+    width: 100%;
+    margin-bottom: 8px;
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
+  }
+
+  > a {
+    margin-top: 32px;
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    font-size: 14px;
+    font-weight: 500;
+  }
+
   @media(min-width: ${DEVICE_BREAKPOINTS.SM}) {
     padding: 64px;
   }
@@ -48,19 +65,6 @@ export const Form = styled.form`
       margin-bottom: 32px;
       font-weight: 500;
     }
-  }
-
-  > label {
-    width: 100%;
-    margin-bottom: 8px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_400};
-  }
-
-  > a {
-    margin-top: 32px;
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    font-size: 14px;
-    font-weight: 500;
   }
 `;
 
