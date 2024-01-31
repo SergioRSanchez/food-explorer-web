@@ -1,4 +1,5 @@
-import { FiMail } from 'react-icons/fi'
+import { useState } from 'react';
+import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi'
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -7,6 +8,12 @@ import { Container, Logo, Form } from './styles';
 
 
 export function SignIn() {
+  const [showPassword, setShowPassword] = useState(false)
+
+  function handleShowPassword() {
+    setShowPassword(!showPassword)
+  }
+
   return (
     <Container>
       <Logo />
@@ -24,8 +31,9 @@ export function SignIn() {
         <label htmlFor="password">Senha</label>
         <Input
           placeholder="No mínimo 6 caracteres"
-          type="text"
-          icon={FiMail}
+          type={showPassword ? 'text' : 'password'}
+          icon={showPassword ? FiEye : FiEyeOff}
+          onClickHandlePasswordType={handleShowPassword}
           id="password"
         />
 
