@@ -14,7 +14,7 @@ export const Container = styled.header`
     cursor: pointer;
   }
 
-  div, button, svg:last-child {
+  div, button, p {
     display: none;
   }
 
@@ -23,12 +23,12 @@ export const Container = styled.header`
     display: none;
   } */
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
     padding: 24px 123px;
 
     gap: 32px;
 
-    div, svg:last-child {
+    div, p {
       display: flex;
     }
     button {
