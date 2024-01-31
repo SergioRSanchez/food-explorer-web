@@ -13,6 +13,10 @@ export const Container = styled.button`
   font-weight: 500;
   line-height: 24px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:disabled {
     background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
   }

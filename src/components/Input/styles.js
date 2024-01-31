@@ -8,7 +8,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK_900};
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */ // alterar na tela de SignIn e SignUp
   border-radius: 8px;
 
   > input {
