@@ -3,6 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  top: 0;
 `;
 
 export const Header = styled.div`

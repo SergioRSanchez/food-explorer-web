@@ -5,12 +5,12 @@ import { Footer } from '../Footer';
 
 import { Container, Header, Content } from './styles';
 
-export function Menu() {
+export function Menu({ onClickHandleMenu }) {
   return (
     <>
       <Container>
         <Header>
-          <p><FiX size={18} /></p>
+          <p><FiX size={18} onClick={onClickHandleMenu} /></p>
           <span>Menu</span>
         </Header>
 

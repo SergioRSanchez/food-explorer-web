@@ -10,10 +10,10 @@ import { Button } from '../Button';
 import logoUser from '../../assets/logo-user.png';
 import logoAdmin from '../../assets/logo-admin.png';
 
-export function Header() {
+export function Header({ onClickHandleMenu }) {
   return (
     <Container>
-      <FiMenu size={24} />
+      <FiMenu size={24} onClick={onClickHandleMenu} />
       <img src={logoUser} alt="logo com o escrito food explorer" />
       <PiReceiptLight size={24} />
 
