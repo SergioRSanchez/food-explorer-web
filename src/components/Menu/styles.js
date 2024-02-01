@@ -10,6 +10,7 @@ export const Container = styled.div`
   left: 0;
   width: 100vw;
   top: 0;
+  z-index: 60;
 `;
 
 export const Header = styled.div`
