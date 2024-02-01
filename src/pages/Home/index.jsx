@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import Swiper from 'swiper';
 
 import { Header } from '../../components/Header';
 import { Menu } from '../../components/Menu';
+import { Card } from '../../components/Card';
 
-import { Container, Banner } from './styles';
+import { Container, Banner, Content, Cards } from './styles';
+import 'swiper/css';
 
 import homeBanner from '../../assets/home-banner.png'
 
@@ -14,12 +17,22 @@ export function Home() {
     setOpenMenu(!openMenu)
   }
 
+  const [favorite, setFavorite] = useState(false);
+
+  function handleFavorite() {
+    setFavorite(!favorite)
+  }
+
+  // const swiper = new Swiper(...);
+
   return (
     <Container>
-      <Header onClickHandleMenu={handleOpenMenu} />
+
 
       {!openMenu
         ? <>
+          <Header onClickHandleMenu={handleOpenMenu} />
+
           <Banner>
             <img src={homeBanner} alt="Imagem com vários macarons de diversas cores." />
 
@@ -28,6 +41,15 @@ export function Home() {
               <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
             </div>
           </Banner>
+
+          <Content>
+            <h2>Refeições</h2>
+
+            <Cards>
+              <Card onClickHandleFavorite={handleFavorite} color={favorite ? 'red' : ''} />
+            </Cards>
+
+          </Content>
         </>
 
         : <Menu onClickHandleMenu={handleOpenMenu} />

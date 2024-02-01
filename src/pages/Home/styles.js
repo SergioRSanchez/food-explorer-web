@@ -69,3 +69,25 @@ export const Banner = styled.div`
     }
   }
 `;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+
+  margin-top: 62px;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    /* margin-left: 24px; */ // Projeto está 24px, porém prefiro manter um padrão
+    margin: 0 0 28px 13px;
+  }
+`;
+
+export const Cards = styled.div`
+  display: flex;
+  gap: 16px;
+  /* flex-wrap: wrap; */
+`;
