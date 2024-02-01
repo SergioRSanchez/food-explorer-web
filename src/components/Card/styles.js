@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
+
 
 export const Container = styled.div`
   display: flex;
@@ -38,7 +40,12 @@ export const Container = styled.div`
     margin-bottom: 12px;
   }
 
-  p + p {
+  small {
+    display: none;
+  }
+
+  small + p {
+    font-family: Roboto;
     margin-top: 0;
     margin-bottom: 0;
     color: ${({ theme }) => theme.COLORS.CAKE_200};
@@ -47,9 +54,10 @@ export const Container = styled.div`
     line-height: 100%;
   }
 
-  div {
+  div:nth-child(1) {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 14px;
 
     span {
@@ -64,5 +72,75 @@ export const Container = styled.div`
     line-height: 24px;
     width: 162px;
     height: 32px;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    width: auto;
+    height: auto;
+
+    > span > svg {
+      
+      top: 16px;
+      right: 16px;
+      width: 24px;
+      height: 22px;
+    }
+
+    img {
+      width: 176px;
+      height: 176px;
+    }
+
+    p {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 140%;
+      
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    small {
+      display: block;
+      font-family: Roboto;
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      text-align: center;
+      font-size: 14px;
+      line-height: 160%;
+      width: 256px;
+      height: 45px;
+      margin-bottom: 15px;
+    }
+
+    small + p {
+      font-size: 32px;
+      line-height: 160%;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      p {
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 160%;
+      }
+
+      > span > svg {
+        width: 24px;
+        height: 24px;
+      }
+
+    }
+
+    button {
+      width: auto;
+      height: auto;
+      padding: 12px 24px;
+    }
+
   }
 `;

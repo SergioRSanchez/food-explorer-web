@@ -6,19 +6,22 @@ import dish from '../../assets/dish.png';
 
 import { Container } from './styles';
 
-export function Card({ onClickHandleFavorite, color }) {
+export function Card({ onClickHandleFavorite, color, title, description, price }) {
   return (
     <Container>
       <span><FiHeart color={color} fill={color} onClick={onClickHandleFavorite} /></span>
       <img src={dish} alt="Foto de um prato" />
-      <p>Salada Ravanello <p><FiChevronRight /></p></p>
-      <p>R$ 49,97</p>
+      <p>{title}<p><FiChevronRight /></p></p>
+      <small>{description}</small>
+      <p>R$ {price}</p>
       <div>
-        <span><FiMinus /></span>
-        <p>1</p>
-        <span><FiPlus /></span>
+        <div>
+          <span><FiMinus /></span>
+          <p>1</p>
+          <span><FiPlus /></span>
+        </div>
+        <Button title="incluir" />
       </div>
-      <Button title="incluir" />
     </Container>
   )
 }

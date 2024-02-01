@@ -84,10 +84,22 @@ export const Content = styled.div`
     /* margin-left: 24px; */ // Projeto está 24px, porém prefiro manter um padrão
     margin: 0 0 28px 13px;
   }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    padding: 0 124px;
+
+    h2 {
+      font-size: 32px;
+      margin: 0 0 28px 0px;
+    }
+  }
 `;
 
 export const Cards = styled.div`
   display: flex;
   gap: 16px;
-  /* flex-wrap: wrap; */
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    gap: 27px;
+  }
 `;

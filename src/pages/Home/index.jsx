@@ -46,7 +46,13 @@ export function Home() {
             <h2>Refeições</h2>
 
             <Cards>
-              <Card onClickHandleFavorite={handleFavorite} color={favorite ? 'red' : ''} />
+              <Card
+                onClickHandleFavorite={handleFavorite}
+                color={favorite ? 'red' : ''}
+                title="Salada Ravanello"
+                description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                price="49,97"
+              />
             </Cards>
 
           </Content>
