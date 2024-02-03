@@ -1,18 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { register } from 'swiper/element/bundle';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, FreeMode } from 'swiper/modules';
 
-
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 import { Header } from '../../components/Header';
 import { Menu } from '../../components/Menu';
 import { Card } from '../../components/Card';
 
 import { Container, Banner, Content, Cards } from './styles';
+
+register();
+
 import 'swiper/css';
 import 'swiper/css/free-mode';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar'
 
 import homeBanner from '../../assets/home-banner.png'
 
@@ -28,6 +32,33 @@ export function Home() {
   function handleFavorite() {
     setFavorite(!favorite)
   }
+
+  const [sliderPerView, setSliderPerView] = useState(2)
+  const [spaceBetweenSlides, setSpaceBetweenSlides] = useState(16)
+  const [enableSwiperNavigation, setEnableSwiperNavigation] = useState(false)
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < DEVICE_BREAKPOINTS.LG.split('px')[0]) {
+        const numberOfSlides = (window.innerWidth - 48) / (210 + 16)
+        setSliderPerView(numberOfSlides)
+        setSpaceBetweenSlides(16)
+        setEnableSwiperNavigation(false)
+      } else {
+        const numberOfSlides = (window.innerWidth - 242) / (304 + 27)
+        const teste = numberOfSlides + 16
+        setSliderPerView(numberOfSlides)
+        setSpaceBetweenSlides(27)
+        setEnableSwiperNavigation(true)
+      }
+    }
+
+    handleResize()
+
+    window.addEventListener("resize", handleResize)
+
+    return () => { window.removeEventListener("resize", handleResize) }
+  }, [])
 
 
   return (
@@ -52,13 +83,11 @@ export function Home() {
 
             <Cards>
               <Swiper
-                slidesPerView={2.5}
-                spaceBetween={16}
-                // navigation
+                slidesPerView={sliderPerView}
+                spaceBetween={spaceBetweenSlides}
+                navigation={enableSwiperNavigation}
                 freeMode={true}
-                pagination={{ clickable: true }}
-                modules={[Pagination, FreeMode]}
-
+                modules={[FreeMode]}
               >
                 <SwiperSlide>
                   <Card

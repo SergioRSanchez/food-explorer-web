@@ -53,7 +53,7 @@ export function Teste() {
         <Swiper
           slidesPerView={sliderPerView}
           // pagination={{ clickable: true }}
-          navigation
+          navigation={false}
           modules={[EffectCoverflow]}
           effect='coverflow'
         // breakpoints={{
