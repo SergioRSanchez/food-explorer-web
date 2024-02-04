@@ -8,6 +8,20 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  footer {
+    position: relative;
+    margin-top: 62px;
+    max-width: 100vw;
+    width: calc(100vw - 17px);
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    footer {
+      margin-top: 49px;
+      padding: 24px 124px;
+    }
+  }
 `;
 
 export const Banner = styled.div`
@@ -52,11 +66,11 @@ export const Banner = styled.div`
     margin-right: 123px;
 
     img {
-    width: 632px;
-    height: 406px;
-    bottom: 0;
-    left: -60px;
-  }
+      width: 632px;
+      height: 406px;
+      bottom: 0;
+      left: -60px;
+    }
 
     h2 {
       font-size: 40px;
@@ -86,7 +100,9 @@ export const Content = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 0 124px;
+    padding: 0 123px;
+
+    margin-top: 49px;
 
     h2 {
       font-size: 32px;

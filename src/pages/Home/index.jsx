@@ -8,6 +8,7 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 import { Header } from '../../components/Header';
 import { Menu } from '../../components/Menu';
 import { Card } from '../../components/Card';
+import { Footer } from '../../components/Footer';
 
 import { Container, Banner, Content, Cards } from './styles';
 
@@ -46,7 +47,6 @@ export function Home() {
         setEnableSwiperNavigation(false)
       } else {
         const numberOfSlides = (window.innerWidth - 242) / (304 + 27)
-        const teste = numberOfSlides + 16
         setSliderPerView(numberOfSlides)
         setSpaceBetweenSlides(27)
         setEnableSwiperNavigation(true)
@@ -66,7 +66,8 @@ export function Home() {
 
 
       {!openMenu
-        ? <>
+        ?
+        <>
           <Header onClickHandleMenu={handleOpenMenu} />
 
           <Banner>
@@ -138,6 +139,130 @@ export function Home() {
             </Cards>
 
           </Content>
+
+          <Content>
+            <h2>Sobremesas</h2>
+
+            <Cards>
+              <Swiper
+                slidesPerView={sliderPerView}
+                spaceBetween={spaceBetweenSlides}
+                navigation={enableSwiperNavigation}
+                freeMode={true}
+                modules={[FreeMode]}
+              >
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </Cards>
+
+          </Content>
+
+          <Content>
+            <h2>Bebidas</h2>
+
+            <Cards>
+              <Swiper
+                slidesPerView={sliderPerView}
+                spaceBetween={spaceBetweenSlides}
+                navigation={enableSwiperNavigation}
+                freeMode={true}
+                modules={[FreeMode]}
+              >
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Card
+                    onClickHandleFavorite={handleFavorite}
+                    color={favorite ? 'red' : ''}
+                    title="Salada Ravanello"
+                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                    price="49,97"
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </Cards>
+
+          </Content>
+
+          <Footer />
         </>
 
         : <Menu onClickHandleMenu={handleOpenMenu} />

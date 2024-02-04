@@ -1,14 +1,14 @@
-import { Container } from './styles';
 import { FiMenu, FiSearch } from 'react-icons/fi';
 import { PiReceiptLight } from "react-icons/pi";
 import { RxExit } from "react-icons/rx";
-
 
 import { Input } from '../Input';
 import { Button } from '../Button';
 
 import logoUser from '../../assets/logo-user.png';
 import logoAdmin from '../../assets/logo-admin.png';
+
+import { Container } from './styles';
 
 export function Header({ onClickHandleMenu }) {
   return (
