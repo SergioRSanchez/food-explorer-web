@@ -5,9 +5,15 @@ import logo from '../../assets/logo.png';
 export const Container = styled.div`
   height: 100vh;
 
+  font-family: Roboto;
+
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  a {
+    font-family: Poppins;
+  }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     padding: 142px 108px;
@@ -31,6 +37,7 @@ export const Form = styled.form`
 
   > h1 {
     display: none;
+    font-family: Poppins;
   }
 
   div {

@@ -47,5 +47,9 @@ export const Container = styled.header`
     > svg {
       display: none;
     }
+
+    svg {
+      cursor: pointer;
+    }
   }
 `;
