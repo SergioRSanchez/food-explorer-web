@@ -15,13 +15,6 @@ export const Container = styled.div`
     max-width: 100vw;
     width: calc(100vw - 17px);
   }
-
-  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    footer {
-      margin-top: 49px;
-      padding: 24px 124px;
-    }
-  }
 `;
 
 export const Banner = styled.div`

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
+
 export const Container = styled.footer`
   margin: 0;
   position: fixed;
@@ -16,5 +18,11 @@ export const Container = styled.footer`
 
   span {
     text-align: center;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    font-size: 12px;
+    margin-top: 49px;
+    padding: 24px 124px;
   }
 `;
