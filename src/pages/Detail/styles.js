@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -12,6 +11,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   margin-top: calc(114px + 16px + 21px);
+  margin-bottom: calc(54px + 77px);
   padding: 0 56px;
 
   div {
@@ -34,6 +34,18 @@ export const Content = styled.div`
 
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    margin-top: calc(114px + 164px);
+    padding: 0 121px;
+
+    section div {
+      align-items: start;
+    }
+
+    div span {
+      font-weight: 700;
+    }
+
+    section div + div {
+      align-items: center;
+    }
   }
 `

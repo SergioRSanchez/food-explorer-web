@@ -17,7 +17,7 @@ export function Card({ onClickHandleFavorite, color, title, description, price }
       <div>
         <div>
           <span><FiMinus /></span>
-          <p>1</p>
+          <p>01</p>
           <span><FiPlus /></span>
         </div>
         <Button title="incluir" />
