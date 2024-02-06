@@ -5,6 +5,7 @@ import { Header } from '../../components/Header';
 import { Menu } from '../../components/Menu';
 import { Footer } from '../../components/Footer';
 import { Dish } from '../../components/Dish';
+import { BackButton } from '../../components/BackButton';
 
 import { Container, Content } from './styles';
 
@@ -23,10 +24,7 @@ export function Detail() {
           <Header onClickHandleMenu={handleOpenMenu} />
 
           <Content>
-            <div>
-              <span><FiChevronLeft /></span>
-              <span>voltar</span>
-            </div>
+            <BackButton />
 
             <Dish />
           </Content>
