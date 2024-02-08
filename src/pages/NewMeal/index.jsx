@@ -18,6 +18,13 @@ export function NewMeal() {
 
   const [selectedOption, setSelectedOption] = useState(null);
 
+  const [ingredientsList, setIngredientsList] = useState([
+    { id: 1, name: 'Pão Naan' },
+    { id: 2, name: 'Gergelim' }
+  ]);
+
+  const [ingredientToAdd, setIngredientToAdd] = useState('');
+
   return (
     <Container>
       <Header />
@@ -54,7 +61,8 @@ export function NewMeal() {
 
           <label htmlFor="ingredients">Ingredientes</label>
           <MultiSelectInput
-            id="ingredients"
+            ingredients={ingredientsList}
+            setIngredientsList={setIngredientsList}
           />
 
         </Form>
