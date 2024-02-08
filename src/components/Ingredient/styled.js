@@ -23,6 +23,11 @@ export const Container = styled.div`
     width: 14px;
     height: 14px;
     cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  span svg:hover {
+    scale: 1.2;
   }
 
   &:hover {
