@@ -8,6 +8,8 @@ import { Input } from '../../components/Input';
 import { SelectInput } from '../../components/SelectInput';
 import { MultiSelectInput } from '../../components/MultiSelectInput';
 import { TextArea } from '../../components/TextArea';
+import { Button } from '../../components/Button';
+import { Footer } from '../../components/Footer';
 
 import { Container, Content, Form } from './styles';
 
@@ -80,8 +82,12 @@ export function NewMeal() {
             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
           />
 
+          <Button title="Salvar alterações" />
+
         </Form>
       </Content>
+
+      <Footer />
     </Container>
   )
 }

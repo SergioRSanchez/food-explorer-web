@@ -1,14 +1,28 @@
 import styled from 'styled-components';
 
+import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
+
 export const Container = styled.div`
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
+
+  footer {
+    position: relative;
+    margin-top: 54px;
+    max-width: 100vw;
+    width: calc(100vw - 17px);
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    margin-top: 0;
+  }
 `;
 
 export const Content = styled.div`
   margin-top: calc(114px + 11px);
+  /* margin-bottom: calc(54px + 77px); */
   padding: 0 32px;
 
   display: flex;
@@ -82,5 +96,9 @@ export const Form = styled.form`
 
   div + label + div + label {
     margin-top: 24px;
+  }
+
+  > button {
+    margin-top: 8px;
   }
 `;
