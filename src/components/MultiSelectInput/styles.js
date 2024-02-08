@@ -49,6 +49,7 @@ export const Button = styled.button`
   span svg {
     width: 14px;
     height: 14px;
+    cursor: pointer;
   }
 
   &:hover {
@@ -76,9 +77,9 @@ export const InputContainer = styled.div`
   border-radius: 8px;
   gap: 8px;
 
-  input svg {
-    width: 12px;
-    height: 12px;
+  svg {
+    width: 14px;
+    height: 14px;
     cursor: pointer;
   }
 `;

@@ -11,6 +11,10 @@ export function MultiSelectInput({ ingredients, handleRemoveIngredient, setIngre
   const [ingredientToAdd, setIngredientToAdd] = useState('');
 
   function handleAddIngredient() {
+    if (!ingredientToAdd) {
+      setShowInput(false)
+      return
+    }
     ingredients.push({ id: Math.random(), name: ingredientToAdd })
 
     setIngredientToAdd('')
@@ -43,7 +47,7 @@ export function MultiSelectInput({ ingredients, handleRemoveIngredient, setIngre
               value={ingredientToAdd}
               onChange={(e) => setIngredientToAdd(e.target.value)}
               onBlur={handleAddIngredient}
-              // onFocus={}
+              autoFocus
               type="text"
             />
             <FiPlus />
