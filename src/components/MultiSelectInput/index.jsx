@@ -15,7 +15,7 @@ export function MultiSelectInput({ ingredients, handleRemoveIngredient, setIngre
       setShowInput(false)
       return
     }
-    ingredients.push({ id: Math.random(), name: ingredientToAdd })
+    ingredients.push({ id: Math.random(), title: ingredientToAdd })
 
     setIngredientToAdd('')
     setShowInput(false)
@@ -32,7 +32,7 @@ export function MultiSelectInput({ ingredients, handleRemoveIngredient, setIngre
       {
         ingredients && ingredients.map((ingredient) => (
           <Ingredient
-            ingredientName={ingredient.name}
+            ingredientTitle={ingredient.title}
             ingredientId={ingredient.id}
             key={ingredient.id}
             onClickHandleRemoveIngredient={() => handleRemoveIngredient(ingredient.id)}

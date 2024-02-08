@@ -2,10 +2,10 @@ import { FiX } from "react-icons/fi";
 
 import { Container } from './styled';
 
-export function Ingredient({ ingredientName, onClickHandleRemoveIngredient }) {
+export function Ingredient({ ingredientTitle, onClickHandleRemoveIngredient }) {
   return (
     <Container>
-      <p>{ingredientName}</p>
+      <p>{ingredientTitle}</p>
       <span><FiX size={14} onClick={onClickHandleRemoveIngredient} /></span>
     </Container>
   )

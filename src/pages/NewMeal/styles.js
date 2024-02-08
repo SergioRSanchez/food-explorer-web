@@ -50,6 +50,10 @@ export const Form = styled.form`
     display: none;
   }
 
+  input[type=number]::-webkit-inner-spin-button {
+    display: none;
+  }
+
   label {
     margin-top: 8px;
   }

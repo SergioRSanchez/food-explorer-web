@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FiUpload } from "react-icons/fi";
+import { TbCurrencyReal } from "react-icons/tb";
 
 import { Header } from '../../components/Header';
 import { BackButton } from '../../components/BackButton';
@@ -19,8 +20,8 @@ export function NewMeal() {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const [ingredientsList, setIngredientsList] = useState([
-    { id: 1, name: 'Pão Naan' },
-    { id: 2, name: 'Gergelim' }
+    { id: 1, title: 'Pão Naan' },
+    { id: 2, title: 'Gergelim' }
   ]);
 
   const [ingredientToAdd, setIngredientToAdd] = useState('');
@@ -44,11 +45,11 @@ export function NewMeal() {
             accept="image/*"
           />
 
-          <label htmlFor="name">Nome</label>
+          <label htmlFor="title">Nome</label>
           <Input
             placeholder="Ex.: Salada Ceasar"
             type="text"
-            id="name"
+            id="title"
           />
 
 
@@ -63,6 +64,14 @@ export function NewMeal() {
           <MultiSelectInput
             ingredients={ingredientsList}
             setIngredientsList={setIngredientsList}
+          />
+
+          <label htmlFor="price">Preço</label>
+          <Input
+            placeholder="00,00"
+            type="number"
+            id="price"
+            icon={TbCurrencyReal}
           />
 
         </Form>
