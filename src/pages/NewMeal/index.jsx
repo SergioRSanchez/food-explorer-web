@@ -7,6 +7,7 @@ import { BackButton } from '../../components/BackButton';
 import { Input } from '../../components/Input';
 import { SelectInput } from '../../components/SelectInput';
 import { MultiSelectInput } from '../../components/MultiSelectInput';
+import { TextArea } from '../../components/TextArea';
 
 import { Container, Content, Form } from './styles';
 
@@ -72,6 +73,11 @@ export function NewMeal() {
             type="number"
             id="price"
             icon={TbCurrencyReal}
+          />
+
+          <label htmlFor="description">Descrição</label>
+          <TextArea
+            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
           />
 
         </Form>
