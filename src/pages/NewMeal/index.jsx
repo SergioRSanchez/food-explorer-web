@@ -5,6 +5,7 @@ import { Header } from '../../components/Header';
 import { BackButton } from '../../components/BackButton';
 import { Input } from '../../components/Input';
 import { SelectInput } from '../../components/SelectInput';
+import { MultiSelectInput } from '../../components/MultiSelectInput';
 
 import { Container, Content, Form } from './styles';
 
@@ -49,6 +50,11 @@ export function NewMeal() {
             id="category"
             selectedOption={selectedOption}
             setSelectedOption={setSelectedOption}
+          />
+
+          <label htmlFor="ingredients">Ingredientes</label>
+          <MultiSelectInput
+            id="ingredients"
           />
 
         </Form>
