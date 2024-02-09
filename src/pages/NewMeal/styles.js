@@ -5,6 +5,8 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 export const Container = styled.div`
   min-height: 100vh;
 
+  position: relative;
+
   display: flex;
   flex-direction: column;
 
@@ -16,13 +18,16 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    margin-top: 0;
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
   }
 `;
 
 export const Content = styled.div`
   margin-top: calc(114px + 11px);
-  /* margin-bottom: calc(54px + 77px); */
   padding: 0 32px;
 
   display: flex;
@@ -37,17 +42,44 @@ export const Content = styled.div`
   button span {
     font-size: 16px;
   }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    margin-top: calc(96px + 40px);
+    padding: 0 123px;
+    padding-bottom: calc(54px + 77px);
+  }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 
   > h1 {
     font-size: 32px;
     font-weight: 500;
     line-height: 140%;
+  }
+
+  h1:nth-child(2) {
+    display: none;
+  }
+
+  > h1 + div,
+  > h1 +div + div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .image,
+  .name,
+  .category,
+  .ingredients,
+  .price {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   label {
@@ -60,16 +92,13 @@ export const Form = styled.form`
   /* input[type=file]::-webkit-file-upload-button {
     display: none;
   } */
-  input[type=file] {
+  input[type=file],
+  .image label + div {
     display: none;
   }
 
   input[type=number]::-webkit-inner-spin-button {
     display: none;
-  }
-
-  label {
-    margin-top: 8px;
   }
 
   label + label {
@@ -100,5 +129,49 @@ export const Form = styled.form`
 
   > button {
     margin-top: 8px;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    gap: 32px;
+
+    h1:nth-child(1) {
+      display: none;
+    }
+    
+    h1:nth-child(2) {
+      display: block;
+    }
+
+    > h1 + div,
+    > h1 +div + div {
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      width: 100%;
+    }
+
+    .image,
+    .name,
+    .category,
+    .ingredients {
+      width: 100%;
+    }
+
+    .image {
+      width: fit-content;
+    }
+
+    .category {
+      width: 364px;
+    }
+
+    .price {
+      width: 251px;
+    }
+
+    > button {
+      width: fit-content;
+      align-self: flex-end;
+    }
   }
 `;

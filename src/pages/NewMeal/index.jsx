@@ -38,51 +38,65 @@ export function NewMeal() {
 
         <Form>
           <h1>Novo prato</h1>
+          <h1>Adicionar prato</h1>
 
-          <label htmlFor="image">Imagem do prato</label>
-          <label htmlFor="image"><FiUpload /> Selecione imagem</label>
-          <Input
-            placeholder="Selecione imagem do prato"
-            type="file"
-            id="image"
-            accept="image/*"
-          />
+          <div>
+            <div className="image">
+              <label htmlFor="image">Imagem do prato</label>
+              <label htmlFor="image"><FiUpload /> Selecione imagem</label>
+              <Input
+                placeholder="Selecione imagem do prato"
+                type="file"
+                id="image"
+                accept="image/*"
+              />
+            </div>
 
-          <label htmlFor="title">Nome</label>
-          <Input
-            placeholder="Ex.: Salada Ceasar"
-            type="text"
-            id="title"
-          />
+            <div className="name">
+              <label htmlFor="title">Nome</label>
+              <Input
+                placeholder="Ex.: Salada Ceasar"
+                type="text"
+                id="title"
+              />
+            </div>
 
+            <div className="category">
+              <label htmlFor="category">Categoria</label>
+              <SelectInput
+                id="category"
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+              />
+            </div>
+          </div>
 
-          <label htmlFor="category">Categoria</label>
-          <SelectInput
-            id="category"
-            selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
-          />
+          <div>
+            <div className="ingredients">
+              <label htmlFor="ingredients">Ingredientes</label>
+              <MultiSelectInput
+                ingredients={ingredientsList}
+                setIngredientsList={setIngredientsList}
+              />
+            </div>
 
-          <label htmlFor="ingredients">Ingredientes</label>
-          <MultiSelectInput
-            ingredients={ingredientsList}
-            setIngredientsList={setIngredientsList}
-          />
-
-          <label htmlFor="price">Preço</label>
-          <Input
-            placeholder="00,00"
-            type="number"
-            id="price"
-            icon={TbCurrencyReal}
-          />
+            <div className="price">
+              <label htmlFor="price">Preço</label>
+              <Input
+                placeholder="00,00"
+                type="number"
+                id="price"
+                icon={TbCurrencyReal}
+              />
+            </div>
+          </div>
 
           <label htmlFor="description">Descrição</label>
           <TextArea
             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
           />
 
-          <Button title="Salvar alterações" />
+          <Button title="Salvar alterações" disabled />
 
         </Form>
       </Content>

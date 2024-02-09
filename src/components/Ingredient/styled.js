@@ -15,7 +15,8 @@ export const Container = styled.div`
   p {
     font-family: Roboto;
     font-size: 16px;
-    line-height: 100%; 
+    line-height: 100%;
+    word-break: break-all;
   }
 
   span svg {
