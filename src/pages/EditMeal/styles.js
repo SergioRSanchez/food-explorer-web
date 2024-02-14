@@ -72,6 +72,14 @@ export const Form = styled.form`
     gap: 24px;
   }
 
+  .image label + label {
+    font-size: 14px;
+  }
+
+  .image label + label + label {
+    display: none;
+  }
+
   .image,
   .name,
   .category,
@@ -82,10 +90,6 @@ export const Form = styled.form`
     gap: 16px;
   }
 
-  .image label + label {
-    font-size: 14px;
-  }
-
   label {
     font-family: Roboto;
     font-size: 16px;
@@ -93,9 +97,6 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
   }
 
-  /* input[type=file]::-webkit-file-upload-button {
-    display: none;
-  } */
   input[type=file],
   .image label + div {
     display: none;
@@ -131,6 +132,25 @@ export const Form = styled.form`
     margin-top: 24px;
   }
 
+  div + div + label + div + div {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+
+    button:first-child {
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    }
+    
+    button:first-child:hover {
+      background-color: ${({ theme }) => theme.COLORS.DARK_900};
+    }
+  }
+
+  > button {
+    margin-top: 8px;
+  }
+
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     gap: 32px;
 
@@ -151,6 +171,11 @@ export const Form = styled.form`
     }
 
     .image label + label {
+      display: none;
+    }
+
+    .image label + label + label {
+      display: flex;
       font-size: 16px;
       width: max-content;
     }
@@ -174,9 +199,12 @@ export const Form = styled.form`
       width: 251px;
     }
 
-    > button {
+    div + div + label + div + div {
+      align-self: self-end;
+    }
+
+    button {
       width: fit-content;
-      align-self: flex-end;
     }
   }
 `;
