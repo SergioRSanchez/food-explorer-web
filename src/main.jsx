@@ -6,18 +6,13 @@ import GlobalStyles from './styles/global';
 
 import theme from './styles/theme';
 
-import { SignIn } from './pages/SignIn';
-import { SignUp } from './pages/SignUp';
-import { Home } from './pages/Home';
-import { Detail } from './pages/Detail';
-import { NewMeal } from './pages/NewMeal';
-import { EditMeal } from './pages/EditMeal';
+import { Routes } from './routes';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <EditMeal />
+      <Routes />
     </ThemeProvider>
   </React.StrictMode>,
 )
