@@ -1,4 +1,5 @@
 import { FiHeart, FiChevronRight, FiMinus, FiPlus } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 import { Button } from '../Button';
 
@@ -10,8 +11,8 @@ export function Card({ onClickHandleFavorite, color, title, description, price }
   return (
     <Container>
       <span><FiHeart color={color} fill={color} onClick={onClickHandleFavorite} /></span>
-      <img src={dish} alt="Foto de um prato" />
-      <p>{title}<p><FiChevronRight /></p></p>
+      <Link to="/details/1"><img src={dish} alt="Foto de um prato" /></Link>
+      <Link to="/details/1"><p>{title}<p><FiChevronRight /></p></p></Link>
       <small>{description}</small>
       <p>R$ {price}</p>
       <div>

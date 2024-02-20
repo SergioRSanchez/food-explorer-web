@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi'
+import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -39,7 +40,7 @@ export function SignIn() {
 
         <Button title="Entrar" />
 
-        <a>Criar uma conta</a>
+        <Link to="/register">Criar uma conta</Link>
 
       </Form>
     </Container>

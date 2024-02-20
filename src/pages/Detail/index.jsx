@@ -24,7 +24,7 @@ export function Detail() {
           <Header onClickHandleMenu={handleOpenMenu} />
 
           <Content>
-            <BackButton />
+            <BackButton to="/" />
 
             <Dish />
           </Content>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
+import { Link } from 'react-router-dom';
 
 import { Header } from '../../components/Header';
 import { BackButton } from '../../components/BackButton';
@@ -34,11 +35,11 @@ export function EditMeal() {
       <Header />
 
       <Content>
-        <BackButton />
+        <BackButton to="/" />
 
         <Form>
           <h1>Editar prato</h1>
-          <h1>Adicionar prato</h1>
+          <h1>Editar prato</h1>
 
           <div>
             <div className="image">

@@ -16,6 +16,12 @@ export const Container = styled.div`
 
   position: relative;
 
+  a {
+    display: flex;
+    text-decoration: none;
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+  }
+
   > span > svg {
     position: absolute;
     top: 16px;
