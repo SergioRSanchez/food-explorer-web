@@ -1,6 +1,9 @@
 import { FiMenu, FiSearch } from 'react-icons/fi';
 import { PiReceiptLight } from "react-icons/pi";
 import { RxExit } from "react-icons/rx";
+import { useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../../hooks/auth';
 
 import { Input } from '../Input';
 import { Button } from '../Button';
@@ -11,6 +14,15 @@ import logoAdmin from '../../assets/logo-admin.png';
 import { Container } from './styles';
 
 export function Header({ onClickHandleMenu }) {
+  const navigate = useNavigate();
+
+  const { signOut } = useAuth();
+
+  function handleSignOut() {
+    signOut();
+    navigate("/");
+  }
+
   return (
     <Container>
       <FiMenu size={24} onClick={onClickHandleMenu} />
@@ -26,7 +38,7 @@ export function Header({ onClickHandleMenu }) {
 
       <Button title={"Pedidos"} icon={PiReceiptLight} />
 
-      <p><RxExit size={24} /></p>
+      <p onClick={handleSignOut}><RxExit size={24} /></p>
     </Container>
   )
 }
