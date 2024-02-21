@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
 import { Link } from 'react-router-dom';
+
+import { api } from '../../services/api';
 
 import { Header } from '../../components/Header';
 import { BackButton } from '../../components/BackButton';
@@ -15,20 +17,53 @@ import { Footer } from '../../components/Footer';
 import { Container, Content, Form } from './styles';
 
 export function EditMeal() {
-  const [mealTitle, setMealTitle] = useState('Salada Ceasar');
 
-  const [selectedOption, setSelectedOption] = useState({ value: 'refeicao', label: 'Refeição' });
+  const [mealTitle, setMealTitle] = useState('');
 
-  const [ingredientsList, setIngredientsList] = useState([
-    { id: 1, title: 'Pão Naan' },
-    { id: 2, title: 'Gergelim' }
-  ]);
+  const [selectedOption, setSelectedOption] = useState({});
+
+  const [ingredientsList, setIngredientsList] = useState([]);
 
   const [ingredientToAdd, setIngredientToAdd] = useState('');
 
-  const [mealPrice, setMealPrice] = useState(40.00);
+  const [mealPrice, setMealPrice] = useState(0);
 
-  const [mealDescription, setMealDescription] = useState('A Salada César é uma opção refrescante para o verão.')
+  const [mealDescription, setMealDescription] = useState('')
+
+  useEffect(() => {
+    api.get("/meals/1").then(response => {
+      setMealTitle(response.data.title)
+      setIngredientsList(response.data.ingredients)
+      setMealPrice(response.data.price)
+
+      function handleCategoryLabel() {
+        if (response.data.category === "refeicao") {
+          setSelectedOption({ value: "refeicao", label: "Refeição" })
+        } else if (response.data.category === "sobremesa") {
+          setSelectedOption({ value: "sobremesa", label: "Sobremesa" })
+        } else if (response.data.category === "bebida") {
+          setSelectedOption({ value: "bebida", label: "Bebida" })
+        }
+      }
+
+      function handleDescriptionText() {
+        const lowerCase = response.data.description.toLowerCase()
+        const firstLetter = lowerCase.charAt(0).toUpperCase()
+        const rest = lowerCase.slice(1)
+        setMealDescription(firstLetter + rest)
+      }
+
+      handleCategoryLabel()
+      handleDescriptionText()
+
+    }).catch(error => {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert('An unexpected error occurred. Please try again later.');
+      }
+    })
+  }, []);
 
   return (
     <Container>
