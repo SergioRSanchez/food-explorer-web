@@ -56,6 +56,10 @@ export const Form = styled.form`
     font-weight: 500;
   }
 
+  div:nth-child(7) svg {
+    cursor: pointer;
+  }
+
   @media(min-width: ${DEVICE_BREAKPOINTS.SM}) {
     padding: 64px;
   }
