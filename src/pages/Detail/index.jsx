@@ -49,8 +49,7 @@ export function Detail() {
   }, [quantity]);
 
   useEffect(() => {
-    api.get("/meals/1").then(response => {
-      setMealTitle(response.data.title)
+    api.get("/meals/3").then(response => {
       setIngredientsList(response.data.ingredients)
       setMealPrice(response.data.price.toFixed(2))
       const imageUrl = `${api.defaults.baseURL}/files/${response.data.image}`;
@@ -60,6 +59,13 @@ export function Detail() {
         setImage(imageUrl)
       }
 
+      function handleTitleText() {
+        const lowerCase = response.data.title.toLowerCase()
+        const firstLetter = lowerCase.charAt(0).toUpperCase()
+        const rest = lowerCase.slice(1)
+        setMealTitle(firstLetter + rest)
+      }
+
       function handleDescriptionText() {
         const lowerCase = response.data.description.toLowerCase()
         const firstLetter = lowerCase.charAt(0).toUpperCase()
@@ -67,6 +73,7 @@ export function Detail() {
         setMealDescription(firstLetter + rest)
       }
 
+      handleTitleText()
       handleDescriptionText()
 
     }).catch(error => {
