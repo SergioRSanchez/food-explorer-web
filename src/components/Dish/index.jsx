@@ -3,11 +3,12 @@ import { PiReceiptLight } from "react-icons/pi";
 
 import { Button } from '../Button';
 
-import dishBig from '../../assets/dish-big.png';
+import imagePlaceholder from '../../assets/placeholder.jpg';
 
 import { Container, Content, Order, Quantity } from './styles';
 
-export function Dish({ title, description, ingredientsList, price, totalPrice, quantity, increaseQuantity, decreaseQuantity }) {
+export function Dish({ title, description, ingredientsList, price, totalPrice, quantity, increaseQuantity, decreaseQuantity, image }) {
+
   function formatNumber() {
     if (quantity < 10) {
       const correctNumber = '0' + quantity
@@ -19,7 +20,7 @@ export function Dish({ title, description, ingredientsList, price, totalPrice, q
 
   return (
     <Container>
-      <img src={dishBig} alt="Imagem de um prato de comida" />
+      <img src={image} alt={`Imagem de um(a) ${title}`} />
 
       <section>
         <Content>

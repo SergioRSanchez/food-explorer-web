@@ -9,6 +9,7 @@ export const Container = styled.div`
   img {
     width: 264px;
     height: 264px;
+    border-radius: 50%;
   }
 
   section {

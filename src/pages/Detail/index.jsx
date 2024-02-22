@@ -9,10 +9,14 @@ import { Footer } from '../../components/Footer';
 import { Dish } from '../../components/Dish';
 import { BackButton } from '../../components/BackButton';
 
+import imagePlaceholder from '../../assets/placeholder.jpg';
+
 import { Container, Content } from './styles';
 
 export function Detail() {
   const [openMenu, setOpenMenu] = useState(false);
+
+  const [image, setImage] = useState(null);
 
   const [mealTitle, setMealTitle] = useState('');
 
@@ -49,6 +53,12 @@ export function Detail() {
       setMealTitle(response.data.title)
       setIngredientsList(response.data.ingredients)
       setMealPrice(response.data.price.toFixed(2))
+      const imageUrl = `${api.defaults.baseURL}/files/${response.data.image}`;
+      if (!response.data.image) {
+        setImage(imagePlaceholder)
+      } else {
+        setImage(imageUrl)
+      }
 
       function handleDescriptionText() {
         const lowerCase = response.data.description.toLowerCase()
@@ -87,6 +97,7 @@ export function Detail() {
               quantity={quantity}
               increaseQuantity={increaseQuantity}
               decreaseQuantity={decreaseQuantity}
+              image={image}
             />
           </Content>
 
