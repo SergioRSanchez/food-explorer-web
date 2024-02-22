@@ -35,13 +35,14 @@ function AuthProvider({ children }) {
     setData({});
   };
 
-  async function updateMeal({ imageFile }) {
+  async function updateMeal({ meal, imageFile }) {
     try {
       if (imageFile) {
         const fileUploadForm = new FormData();
         fileUploadForm.append('avatar', imageFile);
 
         const response = await api.patch('/meals/1/avatar', fileUploadForm);
+        // meal.image = response.data.meal
         alert("Image successfully updated!");
       }
     } catch (error) {
@@ -69,7 +70,8 @@ function AuthProvider({ children }) {
       signIn,
       signOut,
       updateMeal,
-      user: data.user
+      user: data.user,
+      meal: data.meal
     }}
     >
       {children}

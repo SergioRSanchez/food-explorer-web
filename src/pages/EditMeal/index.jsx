@@ -15,11 +15,13 @@ import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
 import { Footer } from '../../components/Footer';
 
+import imagePlaceholder from '../../assets/placeholder.jpg';
+
 import { Container, Content, Form } from './styles';
 
 
 export function EditMeal() {
-  const { updateMeal } = useAuth();
+  const { updateMeal, meal } = useAuth();
 
   const [mealTitle, setMealTitle] = useState('');
 
@@ -53,7 +55,12 @@ export function EditMeal() {
       setMealTitle(response.data.title)
       setIngredientsList(response.data.ingredients)
       setMealPrice(response.data.price)
-      setImage(response.data.image)
+      const imageUrl = `${api.defaults.baseURL}/files/${response.data.image}`;
+      if (!response.data.image) {
+        setImage(imagePlaceholder)
+      } else {
+        setImage(imageUrl)
+      }
 
       function handleCategoryLabel() {
         if (response.data.category === "refeicao") {
