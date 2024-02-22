@@ -55,6 +55,11 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 24px;
 
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
   > h1 {
     font-size: 32px;
     font-weight: 500;

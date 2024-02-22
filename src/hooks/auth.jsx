@@ -33,7 +33,25 @@ function AuthProvider({ children }) {
     localStorage.removeItem("@food-explorer:user");
 
     setData({});
-  }
+  };
+
+  async function updateMeal({ imageFile }) {
+    try {
+      if (imageFile) {
+        const fileUploadForm = new FormData();
+        fileUploadForm.append('avatar', imageFile);
+
+        const response = await api.patch('/meals/1/avatar', fileUploadForm);
+        alert("Image successfully updated!");
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert('An unexpected error occurred. Please try again later.');
+      }
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("@food-explorer:token");
@@ -50,6 +68,7 @@ function AuthProvider({ children }) {
     <AuthContext.Provider value={{
       signIn,
       signOut,
+      updateMeal,
       user: data.user
     }}
     >

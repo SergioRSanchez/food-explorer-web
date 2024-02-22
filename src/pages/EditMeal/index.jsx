@@ -4,6 +4,7 @@ import { TbCurrencyReal } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 
 import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 import { Header } from '../../components/Header';
 import { BackButton } from '../../components/BackButton';
@@ -16,7 +17,9 @@ import { Footer } from '../../components/Footer';
 
 import { Container, Content, Form } from './styles';
 
+
 export function EditMeal() {
+  const { updateMeal } = useAuth();
 
   const [mealTitle, setMealTitle] = useState('');
 
@@ -28,13 +31,29 @@ export function EditMeal() {
 
   const [mealPrice, setMealPrice] = useState(0);
 
-  const [mealDescription, setMealDescription] = useState('')
+  const [mealDescription, setMealDescription] = useState('');
+
+  const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+
+  function handleChangeImage(e) {
+    const file = e.target.files[0];
+    setImageFile(file);
+
+    const imagePreview = URL.createObjectURL(file);
+    setImage(imagePreview)
+  };
+
+  async function handleUpdate() {
+    await updateMeal({ imageFile })
+  }
 
   useEffect(() => {
     api.get("/meals/1").then(response => {
       setMealTitle(response.data.title)
       setIngredientsList(response.data.ingredients)
       setMealPrice(response.data.price)
+      setImage(response.data.image)
 
       function handleCategoryLabel() {
         if (response.data.category === "refeicao") {
@@ -75,6 +94,7 @@ export function EditMeal() {
         <Form>
           <h1>Editar prato</h1>
           <h1>Editar prato</h1>
+          <img src={image} alt="" />
 
           <div>
             <div className="image">
@@ -86,6 +106,7 @@ export function EditMeal() {
                 type="file"
                 id="image"
                 accept="image/*"
+                onChange={handleChangeImage}
               />
             </div>
 
@@ -138,7 +159,7 @@ export function EditMeal() {
 
           <div className='btns'>
             <Button title="Excluir prato" />
-            <Button title="Salvar alterações" disabled />
+            <Button title="Salvar alterações" onClick={handleUpdate} />
           </div>
 
         </Form>
