@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
@@ -22,14 +22,13 @@ import { Container, Content, Form } from './styles';
 
 export function EditMeal() {
   const { updateMeal, meal } = useAuth();
+  const params = useParams();
 
   const [mealTitle, setMealTitle] = useState('');
 
   const [selectedOption, setSelectedOption] = useState({});
 
   const [ingredientsList, setIngredientsList] = useState([]);
-
-  const [ingredientToAdd, setIngredientToAdd] = useState('');
 
   const [mealPrice, setMealPrice] = useState(0);
 
@@ -47,14 +46,17 @@ export function EditMeal() {
   };
 
   async function handleUpdate() {
-    await updateMeal({ imageFile })
-  }
+
+    const ingredientsListNames = ingredientsList.map(name => { return (name.name) })
+
+    const meal = { id: params.id, title: mealTitle, ingredientsList: ingredientsListNames, price: mealPrice, description: mealDescription, category: selectedOption.value }
+    await updateMeal({ meal, imageFile })
+  };
 
   useEffect(() => {
     api.get("/meals/1").then(response => {
-      setMealTitle(response.data.title)
       setIngredientsList(response.data.ingredients)
-      setMealPrice(response.data.price)
+      setMealPrice((response.data.price).toFixed(2))
       const imageUrl = `${api.defaults.baseURL}/files/${response.data.image}`;
       if (!response.data.image) {
         setImage(imagePlaceholder)
@@ -72,6 +74,13 @@ export function EditMeal() {
         }
       }
 
+      function handleTitleText() {
+        const lowerCase = response.data.title.toLowerCase()
+        const firstLetter = lowerCase.charAt(0).toUpperCase()
+        const rest = lowerCase.slice(1)
+        setMealTitle(firstLetter + rest)
+      }
+
       function handleDescriptionText() {
         const lowerCase = response.data.description.toLowerCase()
         const firstLetter = lowerCase.charAt(0).toUpperCase()
@@ -79,6 +88,7 @@ export function EditMeal() {
         setMealDescription(firstLetter + rest)
       }
 
+      handleTitleText()
       handleCategoryLabel()
       handleDescriptionText()
 
@@ -99,9 +109,9 @@ export function EditMeal() {
         <BackButton to="/" />
 
         <Form>
-          <h1>Editar prato</h1>
-          <h1>Editar prato</h1>
-          <img src={image} alt="" />
+          {/* IMAGEM PARA TESTES RETIRAR DEPOIS */}
+          <h1>Editar prato <img src={image} alt="" /></h1>
+          <h1>Editar prato <img src={image} alt="" /></h1>
 
           <div>
             <div className="image">
@@ -121,6 +131,7 @@ export function EditMeal() {
               <label htmlFor="title">Nome</label>
               <Input
                 value={mealTitle}
+                onChange={(e) => setMealTitle(e.target.value)}
                 placeholder={mealTitle}
                 type="text"
                 id="title"
@@ -133,6 +144,7 @@ export function EditMeal() {
                 id="category"
                 selectedOption={selectedOption}
                 setSelectedOption={setSelectedOption}
+                onChange={() => console.log(selectedOption)}
               />
             </div>
           </div>
@@ -149,8 +161,9 @@ export function EditMeal() {
             <div className="price">
               <label htmlFor="price">Preço</label>
               <Input
-                value={mealPrice.toFixed(2)}
-                placeholder={mealPrice.toFixed(2)}
+                value={mealPrice} // lidar com os valores exemplo com toFixed e também com virgula
+                onChange={(e) => setMealPrice(e.target.value)}
+                placeholder={mealPrice}
                 type="number"
                 id="price"
                 icon={TbCurrencyReal}
@@ -161,6 +174,7 @@ export function EditMeal() {
           <label htmlFor="description">Descrição</label>
           <TextArea
             value={mealDescription}
+            onChange={(e) => setMealDescription(e.target.value)}
             placeholder={mealDescription}
           />
 

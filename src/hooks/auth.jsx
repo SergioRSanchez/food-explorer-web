@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { api } from '../services/api';
 
@@ -6,6 +7,8 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
+
+  const params = useParams();
 
   async function signIn({ email, password }) {
     try {
@@ -37,14 +40,18 @@ function AuthProvider({ children }) {
 
   async function updateMeal({ meal, imageFile }) {
     try {
+      if (meal) {
+        const response = await api.put(`/meals/${meal.id}`, meal);
+      }
+
       if (imageFile) {
         const fileUploadForm = new FormData();
         fileUploadForm.append('avatar', imageFile);
 
         const response = await api.patch('/meals/1/avatar', fileUploadForm);
-        // meal.image = response.data.meal
-        alert("Image successfully updated!");
       }
+
+      alert("Meal successfully updated!");
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
