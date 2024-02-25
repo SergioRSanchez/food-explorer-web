@@ -3,6 +3,8 @@ import { register } from 'swiper/element/bundle';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, FreeMode } from 'swiper/modules';
 
+import { api } from '../../services/api';
+
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 import { Header } from '../../components/Header';
@@ -22,21 +24,35 @@ import 'swiper/css/scrollbar'
 import homeBanner from '../../assets/home-banner.png'
 
 export function Home() {
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
 
   function handleOpenMenu() {
     setOpenMenu(!openMenu)
-  }
+  };
 
   const [favorite, setFavorite] = useState(false);
 
   function handleFavorite() {
     setFavorite(!favorite)
-  }
+  };
 
-  const [sliderPerView, setSliderPerView] = useState(2)
-  const [spaceBetweenSlides, setSpaceBetweenSlides] = useState(16)
-  const [enableSwiperNavigation, setEnableSwiperNavigation] = useState(false)
+  const [sliderPerView, setSliderPerView] = useState(2);
+  const [spaceBetweenSlides, setSpaceBetweenSlides] = useState(16);
+  const [enableSwiperNavigation, setEnableSwiperNavigation] = useState(false);
+
+  useEffect(() => {
+    api.get('/meals?title').then(response => {
+      setData(response.data)
+    })
+  }, [])
+
+  useEffect(() => {
+    api.get(`/meals?title=${search}`).then(response => {
+      setData(response.data)
+    })
+  }, [search]);
 
   useEffect(() => {
     function handleResize() {
@@ -58,7 +74,7 @@ export function Home() {
     window.addEventListener("resize", handleResize)
 
     return () => { window.removeEventListener("resize", handleResize) }
-  }, [])
+  }, []);
 
 
   return (
@@ -68,7 +84,11 @@ export function Home() {
       {!openMenu
         ?
         <>
-          <Header onClickHandleMenu={handleOpenMenu} />
+          <Header
+            search={search}
+            setSearch={setSearch}
+            onClickHandleMenu={handleOpenMenu}
+          />
 
           <Banner>
             <img src={homeBanner} alt="Imagem com vários macarons de diversas cores." />
@@ -90,51 +110,23 @@ export function Home() {
                 freeMode={true}
                 modules={[FreeMode]}
               >
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
+                {
+                  data &&
+                  data.map(meal => (
+                    meal.category === 'refeicao' ?
+                      <SwiperSlide key={meal.id}>
+                        <Card
+                          onClickHandleFavorite={handleFavorite}
+                          color={favorite ? 'red' : ''}
+                          title={meal.title}
+                          description={meal.description}
+                          price={meal.price}
+                        />
+                      </SwiperSlide>
+                      : null
+                  ))
+                }
+
               </Swiper>
             </Cards>
 
@@ -151,51 +143,22 @@ export function Home() {
                 freeMode={true}
                 modules={[FreeMode]}
               >
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
+                {
+                  data &&
+                  data.map(meal => (
+                    meal.category === 'sobremesa' ?
+                      <SwiperSlide key={meal.id}>
+                        <Card
+                          onClickHandleFavorite={handleFavorite}
+                          color={favorite ? 'red' : ''}
+                          title={meal.title}
+                          description={meal.description}
+                          price={meal.price}
+                        />
+                      </SwiperSlide>
+                      : null
+                  ))
+                }
               </Swiper>
             </Cards>
 
@@ -212,51 +175,22 @@ export function Home() {
                 freeMode={true}
                 modules={[FreeMode]}
               >
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <Card
-                    onClickHandleFavorite={handleFavorite}
-                    color={favorite ? 'red' : ''}
-                    title="Salada Ravanello"
-                    description="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                    price="49,97"
-                  />
-                </SwiperSlide>
+                {
+                  data &&
+                  data.map(meal => (
+                    meal.category === 'bebidas' ?
+                      <SwiperSlide key={meal.id}>
+                        <Card
+                          onClickHandleFavorite={handleFavorite}
+                          color={favorite ? 'red' : ''}
+                          title={meal.title}
+                          description={meal.description}
+                          price={meal.price}
+                        />
+                      </SwiperSlide>
+                      : null
+                  ))
+                }
               </Swiper>
             </Cards>
 

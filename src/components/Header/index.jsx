@@ -13,7 +13,7 @@ import logoAdmin from '../../assets/logo-admin.png';
 
 import { Container } from './styles';
 
-export function Header({ onClickHandleMenu }) {
+export function Header({ onClickHandleMenu, search, setSearch }) {
   const navigate = useNavigate();
 
   const { signOut } = useAuth();
@@ -34,6 +34,8 @@ export function Header({ onClickHandleMenu }) {
         type="text"
         icon={FiSearch}
         id="name"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
 
       <Button title={"Pedidos"} icon={PiReceiptLight} />
