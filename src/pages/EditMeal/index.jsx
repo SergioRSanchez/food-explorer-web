@@ -54,7 +54,7 @@ export function EditMeal() {
   };
 
   useEffect(() => {
-    api.get("/meals/1").then(response => {
+    api.get(`/meals/${params.id}`).then(response => {
       setIngredientsList(response.data.ingredients)
       setMealPrice((response.data.price).toFixed(2))
       const imageUrl = `${api.defaults.baseURL}/files/${response.data.image}`;
