@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FiChevronLeft } from "react-icons/fi";
+import { useParams } from 'react-router-dom';
 
 import { api } from '../../services/api';
 
@@ -14,6 +15,8 @@ import imagePlaceholder from '../../assets/placeholder.jpg';
 import { Container, Content } from './styles';
 
 export function Detail() {
+  const params = useParams();
+
   const [openMenu, setOpenMenu] = useState(false);
 
   const [image, setImage] = useState(null);
@@ -49,9 +52,10 @@ export function Detail() {
   }, [quantity]);
 
   useEffect(() => {
-    api.get("/meals/3").then(response => {
+    api.get(`/meals/${params.id}`).then(response => {
       setIngredientsList(response.data.ingredients)
-      setMealPrice(response.data.price.toFixed(2))
+      setMealPrice((response.data.price).toFixed(2))
+      setTotalPrice((response.data.price).toFixed(2))
       const imageUrl = `${api.defaults.baseURL}/files/${response.data.image}`;
       if (!response.data.image) {
         setImage(imagePlaceholder)

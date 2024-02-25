@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
