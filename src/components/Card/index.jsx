@@ -3,18 +3,16 @@ import { Link } from 'react-router-dom';
 
 import { Button } from '../Button';
 
-import dish from '../../assets/dish.png';
-
 import { Container } from './styles';
 
-export function Card({ onClickHandleFavorite, color, title, description, price }) {
+export function Card({ onClickHandleFavorite, color, title, description, price, id, image }) {
   return (
     <Container>
       <span><FiHeart color={color} fill={color} onClick={onClickHandleFavorite} /></span>
-      <Link to="/details/1"><img src={dish} alt="Foto de um prato" /></Link>
-      <Link to="/details/1"><p>{title}<p><FiChevronRight /></p></p></Link>
+      <Link to={`/details/${id}`}><img src={image} alt={`Foto de um(a) ${title}`} /></Link>
+      <Link to={`/details/${id}`}><p>{title}<p><FiChevronRight /></p></p></Link>
       <small>{description}</small>
-      <p>R$ {price}</p>
+      <p>R$ {(price).toFixed(2)}</p>
       <div>
         <div>
           <span><FiMinus /></span>

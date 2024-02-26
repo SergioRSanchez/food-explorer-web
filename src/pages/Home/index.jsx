@@ -77,6 +77,7 @@ export function Home() {
   }, []);
 
 
+
   return (
     <Container>
 
@@ -114,13 +115,15 @@ export function Home() {
                   data &&
                   data.map(meal => (
                     meal.category === 'refeicao' ?
-                      <SwiperSlide key={meal.id}>
+                      <SwiperSlide key={meal.id} >
                         <Card
                           onClickHandleFavorite={handleFavorite}
+                          id={meal.id}
                           color={favorite ? 'red' : ''}
                           title={meal.title}
                           description={meal.description}
                           price={meal.price}
+                          image={`${api.defaults.baseURL}/files/${meal.image}`}
                         />
                       </SwiperSlide>
                       : null
@@ -150,10 +153,12 @@ export function Home() {
                       <SwiperSlide key={meal.id}>
                         <Card
                           onClickHandleFavorite={handleFavorite}
+                          id={meal.id}
                           color={favorite ? 'red' : ''}
                           title={meal.title}
                           description={meal.description}
                           price={meal.price}
+                          image={`${api.defaults.baseURL}/files/${meal.image}`}
                         />
                       </SwiperSlide>
                       : null
@@ -182,10 +187,12 @@ export function Home() {
                       <SwiperSlide key={meal.id}>
                         <Card
                           onClickHandleFavorite={handleFavorite}
+                          id={meal.id}
                           color={favorite ? 'red' : ''}
                           title={meal.title}
                           description={meal.description}
                           price={meal.price}
+                          image={`${api.defaults.baseURL}/files/${meal.image}`}
                         />
                       </SwiperSlide>
                       : null

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 import homeBanner from '../../assets/home-banner.png';
@@ -106,15 +107,10 @@ export const Content = styled.div`
 
 export const Cards = styled.div`
   display: flex;
-  /* gap: 16px; */
   --swiper-theme-color: ${({ theme }) => theme.COLORS.LIGHT_100};
   --swiper-navigation-size: 40px;
 
-  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    /* gap: 27px; */
-
-    .swiper {
-      width: 100vw;
-    }
+  .swiper {
+    width: 100%;
   }
 `;

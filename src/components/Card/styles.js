@@ -33,6 +33,8 @@ export const Container = styled.div`
     width: 88px;
     height: 88px;
     flex-shrink: 0;
+
+    border-radius: 50%;
   }
 
   p {
@@ -44,6 +46,8 @@ export const Container = styled.div`
 
     margin-top: 12px;
     margin-bottom: 12px;
+
+    text-align: center;
   }
 
   small {
