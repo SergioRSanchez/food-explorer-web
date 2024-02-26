@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
+import { useNavigate } from 'react-router-dom';
+
+import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 import { Header } from '../../components/Header';
 import { BackButton } from '../../components/BackButton';
@@ -11,23 +15,53 @@ import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
 import { Footer } from '../../components/Footer';
 
+import imagePlaceholder from '../../assets/placeholder.jpg';
+
 import { Container, Content, Form } from './styles';
 
 export function NewMeal() {
-  const [openSelect, setOpenSelect] = useState(false);
+  const { createMeal, meal } = useAuth();
+  const navigate = useNavigate();
 
-  function handleSelectValues() {
-    setOpenSelect(!openSelect)
-  }
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [mealTitle, setMealTitle] = useState('');
 
-  const [ingredientsList, setIngredientsList] = useState([
-    { id: 1, title: 'Pão Naan' },
-    { id: 2, title: 'Gergelim' }
-  ]);
+  const [selectedOption, setSelectedOption] = useState({});
+
+  const [ingredientsList, setIngredientsList] = useState([]);
+
+  const [mealPrice, setMealPrice] = useState('');
+
+  const [mealDescription, setMealDescription] = useState('');
+
+  const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+
 
   const [ingredientToAdd, setIngredientToAdd] = useState('');
+
+  function handleTitleText(e) {
+    const lowerCase = e.target.value
+    const firstLetter = lowerCase.charAt(0).toUpperCase()
+    const rest = lowerCase.slice(1)
+    setMealTitle(firstLetter + rest)
+  }
+
+  function handleDescriptionText(e) {
+    const lowerCase = e.target.value
+    const firstLetter = lowerCase.charAt(0).toUpperCase()
+    const rest = lowerCase.slice(1)
+    setMealDescription(firstLetter + rest)
+  }
+
+  async function handleCreate() {
+    const ingredientsListNames = ingredientsList.map(name => { return (name.name) })
+
+    const meal = { title: mealTitle, ingredients: ingredientsListNames, price: mealPrice, description: mealDescription, category: selectedOption.value }
+    await createMeal({ meal })
+    navigate('/')
+    // console.log(meal)
+  }
 
   return (
     <Container>
@@ -58,6 +92,8 @@ export function NewMeal() {
                 placeholder="Ex.: Salada Ceasar"
                 type="text"
                 id="title"
+                value={mealTitle}
+                onChange={handleTitleText}
               />
             </div>
 
@@ -87,6 +123,8 @@ export function NewMeal() {
                 type="number"
                 id="price"
                 icon={TbCurrencyReal}
+                value={mealPrice}
+                onChange={(e) => setMealPrice(Number(e.target.value))}
               />
             </div>
           </div>
@@ -94,9 +132,15 @@ export function NewMeal() {
           <label htmlFor="description">Descrição</label>
           <TextArea
             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+            value={mealDescription}
+            onChange={handleDescriptionText}
           />
 
-          <Button title="Salvar alterações" disabled />
+          <Button
+            title="Salvar alterações"
+            onClick={handleCreate}
+            disabled={mealTitle === '' || mealPrice === '' || mealDescription === '' || selectedOption === {} || ingredientsList === []}
+          />
 
         </Form>
       </Content>

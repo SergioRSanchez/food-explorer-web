@@ -144,7 +144,7 @@ export function EditMeal() {
                 id="category"
                 selectedOption={selectedOption}
                 setSelectedOption={setSelectedOption}
-                onChange={() => console.log(selectedOption)}
+              // onChange={() => console.log(selectedOption)}
               />
             </div>
           </div>

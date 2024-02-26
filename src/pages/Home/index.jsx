@@ -183,7 +183,7 @@ export function Home() {
                 {
                   data &&
                   data.map(meal => (
-                    meal.category === 'bebidas' ?
+                    meal.category === 'bebida' ?
                       <SwiperSlide key={meal.id}>
                         <Card
                           onClickHandleFavorite={handleFavorite}

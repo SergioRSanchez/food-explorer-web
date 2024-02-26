@@ -38,6 +38,22 @@ function AuthProvider({ children }) {
     setData({});
   };
 
+  async function createMeal({ meal }) {
+    try {
+      if (meal) {
+        const response = await api.post('/meals', meal);
+      }
+
+      alert("Meal successfully created!");
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert('An unexpected error occurred. Please try again later.');
+      }
+    }
+  };
+
   async function updateMeal({ meal, imageFile }) {
     try {
       if (meal) {
@@ -77,6 +93,7 @@ function AuthProvider({ children }) {
       signIn,
       signOut,
       updateMeal,
+      createMeal,
       user: data.user,
       meal: data.meal
     }}
