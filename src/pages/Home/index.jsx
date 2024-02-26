@@ -206,7 +206,11 @@ export function Home() {
           <Footer />
         </>
 
-        : <Menu onClickHandleMenu={handleOpenMenu} />
+        : <Menu
+          search={search}
+          setSearch={setSearch}
+          onClickHandleMenu={handleOpenMenu}
+        />
       }
 
     </Container >

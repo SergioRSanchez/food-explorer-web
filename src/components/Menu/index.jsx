@@ -8,7 +8,7 @@ import { Footer } from '../Footer';
 
 import { Container, Header, Content } from './styles';
 
-export function Menu({ onClickHandleMenu }) {
+export function Menu({ onClickHandleMenu, search, setSearch }) {
   const navigate = useNavigate();
 
   const { signOut } = useAuth();
@@ -32,6 +32,8 @@ export function Menu({ onClickHandleMenu }) {
             type="text"
             icon={FiSearch}
             id="name"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
 
           <button onClick={handleSignOut}>Sair</button>
