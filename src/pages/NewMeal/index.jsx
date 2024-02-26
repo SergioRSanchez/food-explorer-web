@@ -139,7 +139,7 @@ export function NewMeal() {
           <Button
             title="Salvar alterações"
             onClick={handleCreate}
-            disabled={mealTitle === '' || mealPrice === '' || mealDescription === '' || selectedOption === {} || ingredientsList === []}
+            disabled={mealTitle == '' || mealPrice == '' || mealDescription == '' || selectedOption == {} || ingredientsList == []}
           />
 
         </Form>
