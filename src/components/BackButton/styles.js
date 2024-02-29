@@ -5,6 +5,7 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled(Link)`
   background: none;
+  width: fit-content;
   border: none;
 
   display: flex;
