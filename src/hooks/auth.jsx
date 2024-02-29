@@ -7,6 +7,7 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
+  const [idOfCreatedMeal, setIdOfCreatedMeal] = useState(null);
 
   const params = useParams();
 
@@ -38,10 +39,19 @@ function AuthProvider({ children }) {
     setData({});
   };
 
-  async function createMeal({ meal }) {
+  async function createMeal({ meal, imageFile }) {
     try {
       if (meal) {
         const response = await api.post('/meals', meal);
+
+        const idFromResponse = response.data;
+
+        if (imageFile) {
+          const fileUploadForm = new FormData();
+          fileUploadForm.append('avatar', imageFile);
+
+          const response = await api.patch(`/meals/${idFromResponse}/avatar`, fileUploadForm);
+        }
       }
 
       alert("Meal successfully created!");

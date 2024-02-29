@@ -66,9 +66,8 @@ export function NewMeal() {
     const ingredientsListNames = ingredientsList.map(name => { return (name.name) })
 
     const meal = { title: mealTitle, ingredients: ingredientsListNames, price: mealPrice, description: mealDescription, category: selectedOption.value }
-    await createMeal({ meal })
+    await createMeal({ meal, imageFile })
     navigate('/')
-    // console.log(meal)
   }
 
   return (
@@ -76,7 +75,7 @@ export function NewMeal() {
       <Header />
 
       <Content>
-        <BackButton />
+        <BackButton to="/" />
 
         <Form>
           <h1>Novo prato <img src={image} alt="" /></h1>
