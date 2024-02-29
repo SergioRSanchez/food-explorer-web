@@ -64,7 +64,7 @@ function AuthProvider({ children }) {
         const fileUploadForm = new FormData();
         fileUploadForm.append('avatar', imageFile);
 
-        const response = await api.patch('/meals/1/avatar', fileUploadForm);
+        const response = await api.patch(`/meals/${meal.id}/avatar`, fileUploadForm);
       }
 
       alert("Meal successfully updated!");

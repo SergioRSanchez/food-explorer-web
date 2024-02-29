@@ -40,6 +40,14 @@ export function NewMeal() {
 
   const [ingredientToAdd, setIngredientToAdd] = useState('');
 
+  function handleChangeImage(e) {
+    const file = e.target.files[0];
+    setImageFile(file);
+
+    const imagePreview = URL.createObjectURL(file);
+    setImage(imagePreview)
+  };
+
   function handleTitleText(e) {
     const lowerCase = e.target.value
     const firstLetter = lowerCase.charAt(0).toUpperCase()
@@ -71,8 +79,8 @@ export function NewMeal() {
         <BackButton />
 
         <Form>
-          <h1>Novo prato</h1>
-          <h1>Adicionar prato</h1>
+          <h1>Novo prato <img src={image} alt="" /></h1>
+          <h1>Adicionar prato <img src={image} alt="" /></h1>
 
           <div>
             <div className="image">
@@ -83,6 +91,7 @@ export function NewMeal() {
                 type="file"
                 id="image"
                 accept="image/*"
+                onChange={handleChangeImage}
               />
             </div>
 
