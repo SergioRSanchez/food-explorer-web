@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
@@ -23,6 +23,7 @@ import { Container, Content, Form } from './styles';
 export function EditMeal() {
   const { updateMeal, meal } = useAuth();
   const params = useParams();
+  const navigate = useNavigate();
 
   const [mealTitle, setMealTitle] = useState('');
 
@@ -51,6 +52,7 @@ export function EditMeal() {
 
     const meal = { id: params.id, title: mealTitle, ingredientsList: ingredientsListNames, price: mealPrice, description: mealDescription, category: selectedOption.value }
     await updateMeal({ meal, imageFile })
+    navigate('/')
   };
 
   useEffect(() => {
@@ -109,9 +111,8 @@ export function EditMeal() {
         <BackButton to="/" />
 
         <Form>
-          {/* IMAGEM PARA TESTES RETIRAR DEPOIS */}
-          <h1>Editar prato <img src={image} alt="" /></h1>
-          <h1>Editar prato <img src={image} alt="" /></h1>
+          <h1>Editar prato</h1>
+          <h1>Editar prato</h1>
 
           <div>
             <div className="image">
@@ -144,7 +145,6 @@ export function EditMeal() {
                 id="category"
                 selectedOption={selectedOption}
                 setSelectedOption={setSelectedOption}
-              // onChange={() => console.log(selectedOption)}
               />
             </div>
           </div>
@@ -161,7 +161,7 @@ export function EditMeal() {
             <div className="price">
               <label htmlFor="price">Preço</label>
               <Input
-                value={mealPrice} // lidar com os valores exemplo com toFixed e também com virgula
+                value={mealPrice}
                 onChange={(e) => setMealPrice(e.target.value)}
                 placeholder={mealPrice}
                 type="number"

@@ -78,8 +78,8 @@ export function NewMeal() {
         <BackButton to="/" />
 
         <Form>
-          <h1>Novo prato <img src={image} alt="" /></h1>
-          <h1>Adicionar prato <img src={image} alt="" /></h1>
+          <h1>Novo prato</h1>
+          <h1>Adicionar prato</h1>
 
           <div>
             <div className="image">
