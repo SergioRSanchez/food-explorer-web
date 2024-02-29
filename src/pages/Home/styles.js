@@ -89,7 +89,6 @@ export const Content = styled.div`
     font-size: 18px;
     font-weight: 500;
     line-height: 140%;
-    /* margin-left: 24px; */ // Projeto está 24px, porém prefiro manter um padrão
     margin: 0 0 28px 13px;
   }
 
@@ -112,5 +111,12 @@ export const Cards = styled.div`
 
   .swiper {
     width: 100%;
+    mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    .swiper {
+      mask: linear-gradient(to right, transparent, white 1%, white 99%, transparent);
+    }
   }
 `;
