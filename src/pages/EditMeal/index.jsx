@@ -38,6 +38,20 @@ export function EditMeal() {
   const [image, setImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
 
+  function handleTitleText(e) {
+    const lowerCase = e.target.value
+    const firstLetter = lowerCase.charAt(0).toUpperCase()
+    const rest = lowerCase.slice(1)
+    setMealTitle(firstLetter + rest)
+  }
+
+  function handleDescriptionText(e) {
+    const lowerCase = e.target.value
+    const firstLetter = lowerCase.charAt(0).toUpperCase()
+    const rest = lowerCase.slice(1)
+    setMealDescription(firstLetter + rest)
+  }
+
   function handleChangeImage(e) {
     const file = e.target.files[0];
     setImageFile(file);
@@ -132,7 +146,7 @@ export function EditMeal() {
               <label htmlFor="title">Nome</label>
               <Input
                 value={mealTitle}
-                onChange={(e) => setMealTitle(e.target.value)}
+                onChange={handleTitleText}
                 placeholder={mealTitle}
                 type="text"
                 id="title"
@@ -174,7 +188,7 @@ export function EditMeal() {
           <label htmlFor="description">Descrição</label>
           <TextArea
             value={mealDescription}
-            onChange={(e) => setMealDescription(e.target.value)}
+            onChange={handleDescriptionText}
             placeholder={mealDescription}
           />
 
