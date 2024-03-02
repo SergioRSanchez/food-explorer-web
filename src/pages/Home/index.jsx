@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, FreeMode } from 'swiper/modules';
 
 import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth';
+import { USER_ROLE } from '../../utils/roles';
 
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
@@ -24,6 +26,8 @@ import 'swiper/css/scrollbar';
 import homeBanner from '../../assets/home-banner.png'
 
 export function Home() {
+  const { user } = useAuth();
+
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
@@ -42,11 +46,11 @@ export function Home() {
   const [spaceBetweenSlides, setSpaceBetweenSlides] = useState(16);
   const [enableSwiperNavigation, setEnableSwiperNavigation] = useState(false);
 
-  useEffect(() => {
-    api.get('/meals?title').then(response => {
-      setData(response.data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   api.get('/meals?title').then(response => {
+  //     setData(response.data)
+  //   })
+  // }, [])
 
   useEffect(() => {
     api.get(`/meals?title=${search}`).then(response => {
@@ -102,6 +106,9 @@ export function Home() {
 
           <Content>
             <h2>Refeições</h2>
+            {
+              user.role === USER_ROLE.ADMIN ? <h1>Admin</h1> : <h1>Customer</h1>
+            }
 
             <Cards>
               <Swiper
