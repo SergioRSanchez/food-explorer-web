@@ -2,6 +2,7 @@ import { FiX, FiSearch } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/auth';
+import { USER_ROLE } from '../../utils/roles';
 
 import { Input } from '../Input';
 import { Footer } from '../Footer';
@@ -11,7 +12,7 @@ import { Container, Header, Content } from './styles';
 export function Menu({ onClickHandleMenu, search, setSearch }) {
   const navigate = useNavigate();
 
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   function handleSignOut() {
     signOut();
@@ -36,6 +37,9 @@ export function Menu({ onClickHandleMenu, search, setSearch }) {
             onChange={(e) => setSearch(e.target.value)}
           />
 
+          {
+            user.role === USER_ROLE.ADMIN && <button onClick={handleSignOut} onClick={() => navigate("/new")}>Novo prato</button>
+          }
           <button onClick={handleSignOut}>Sair</button>
         </Content>
       </Container>
