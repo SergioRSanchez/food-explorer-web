@@ -83,6 +83,7 @@ export const Content = styled.div`
 
     p {
       font-size: 40px;
+      text-align: left;
     }
 
     p + h2 {
@@ -123,6 +124,11 @@ export const Order = styled.div`
       width: 21px;
       height: 21px;
     }
+  }
+
+  .edit-button {
+    font-size: 14px;
+    padding: 12px 24px;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {

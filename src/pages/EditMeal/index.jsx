@@ -18,6 +18,7 @@ import { Footer } from '../../components/Footer';
 import imagePlaceholder from '../../assets/placeholder.jpg';
 
 import { Container, Content, Form } from './styles';
+import { Menu } from '../../components/Menu';
 
 
 export function EditMeal() {
@@ -37,6 +38,12 @@ export function EditMeal() {
 
   const [image, setImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
+
+  const [openMenu, setOpenMenu] = useState(false);
+
+  function handleOpenMenu() {
+    setOpenMenu(!openMenu)
+  };
 
   function handleTitleText(e) {
     const lowerCase = e.target.value
@@ -119,88 +126,101 @@ export function EditMeal() {
 
   return (
     <Container>
-      <Header />
 
-      <Content>
-        <BackButton to="/" />
+      {
+        !openMenu
+          ?
+          <>
+            <Header onClickHandleMenu={handleOpenMenu} />
 
-        <Form>
-          <h1>Editar prato</h1>
-          <h1>Editar prato</h1>
+            <Content>
+              <BackButton to="/" />
 
-          <div>
-            <div className="image">
-              <label htmlFor="image">Imagem do prato</label>
-              <label htmlFor="image"><FiUpload /> Selecione imagem para alterá-la</label>
-              <label htmlFor="image"><FiUpload /> Selecione imagem</label>
-              <Input
-                placeholder="Selecione nova imagem do prato"
-                type="file"
-                id="image"
-                accept="image/*"
-                onChange={handleChangeImage}
-              />
-            </div>
+              <Form>
+                <h1>Editar prato</h1>
+                <h1>Editar prato</h1>
 
-            <div className="name">
-              <label htmlFor="title">Nome</label>
-              <Input
-                value={mealTitle}
-                onChange={handleTitleText}
-                placeholder={mealTitle}
-                type="text"
-                id="title"
-              />
-            </div>
+                <div>
+                  <div className="image">
+                    <label htmlFor="image">Imagem do prato</label>
+                    <label htmlFor="image"><FiUpload /> Selecione imagem para alterá-la</label>
+                    <label htmlFor="image"><FiUpload /> Selecione imagem</label>
+                    <Input
+                      placeholder="Selecione nova imagem do prato"
+                      type="file"
+                      id="image"
+                      accept="image/*"
+                      onChange={handleChangeImage}
+                    />
+                  </div>
 
-            <div className="category">
-              <label htmlFor="category">Categoria</label>
-              <SelectInput
-                id="category"
-                selectedOption={selectedOption}
-                setSelectedOption={setSelectedOption}
-              />
-            </div>
-          </div>
+                  <div className="name">
+                    <label htmlFor="title">Nome</label>
+                    <Input
+                      value={mealTitle}
+                      onChange={handleTitleText}
+                      placeholder={mealTitle}
+                      type="text"
+                      id="title"
+                    />
+                  </div>
 
-          <div>
-            <div className="ingredients">
-              <label htmlFor="ingredients">Ingredientes</label>
-              <MultiSelectInput
-                ingredients={ingredientsList}
-                setIngredientsList={setIngredientsList}
-              />
-            </div>
+                  <div className="category">
+                    <label htmlFor="category">Categoria</label>
+                    <SelectInput
+                      id="category"
+                      selectedOption={selectedOption}
+                      setSelectedOption={setSelectedOption}
+                    />
+                  </div>
+                </div>
 
-            <div className="price">
-              <label htmlFor="price">Preço</label>
-              <Input
-                value={mealPrice}
-                onChange={(e) => setMealPrice(e.target.value)}
-                placeholder={mealPrice}
-                type="number"
-                id="price"
-                icon={TbCurrencyReal}
-              />
-            </div>
-          </div>
+                <div>
+                  <div className="ingredients">
+                    <label htmlFor="ingredients">Ingredientes</label>
+                    <MultiSelectInput
+                      ingredients={ingredientsList}
+                      setIngredientsList={setIngredientsList}
+                    />
+                  </div>
 
-          <label htmlFor="description">Descrição</label>
-          <TextArea
-            value={mealDescription}
-            onChange={handleDescriptionText}
-            placeholder={mealDescription}
+                  <div className="price">
+                    <label htmlFor="price">Preço</label>
+                    <Input
+                      value={mealPrice}
+                      onChange={(e) => setMealPrice(e.target.value)}
+                      placeholder={mealPrice}
+                      type="number"
+                      id="price"
+                      icon={TbCurrencyReal}
+                    />
+                  </div>
+                </div>
+
+                <label htmlFor="description">Descrição</label>
+                <TextArea
+                  value={mealDescription}
+                  onChange={handleDescriptionText}
+                  placeholder={mealDescription}
+                />
+
+                <div className='btns'>
+                  <Button title="Excluir prato" />
+                  <Button title="Salvar alterações" onClick={handleUpdate} />
+                </div>
+
+              </Form>
+            </Content>
+
+            <Footer />
+          </>
+          :
+          <Menu
+            onClickHandleMenu={handleOpenMenu}
           />
+      }
 
-          <div className='btns'>
-            <Button title="Excluir prato" />
-            <Button title="Salvar alterações" onClick={handleUpdate} />
-          </div>
 
-        </Form>
-      </Content>
-
-      <Footer />
     </Container>
   )
 }

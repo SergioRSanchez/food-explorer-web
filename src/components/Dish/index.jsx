@@ -1,5 +1,9 @@
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { PiReceiptLight } from "react-icons/pi";
+import { useParams, useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../../hooks/auth';
+import { USER_ROLE } from '../../utils/roles';
 
 import { Button } from '../Button';
 
@@ -7,7 +11,9 @@ import imagePlaceholder from '../../assets/placeholder.jpg';
 
 import { Container, Content, Order, Quantity } from './styles';
 
-export function Dish({ title, description, ingredientsList, price, totalPrice, quantity, increaseQuantity, decreaseQuantity, image }) {
+export function Dish({ title, description, ingredientsList, price, totalPrice, quantity, increaseQuantity, decreaseQuantity, image, id }) {
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   function formatNumber() {
     if (quantity < 10) {
@@ -36,15 +42,25 @@ export function Dish({ title, description, ingredientsList, price, totalPrice, q
           </div>
         </Content>
 
-        <Order>
-          <Quantity>
-            <span><FiMinus onClick={decreaseQuantity} /></span>
-            <p>{formatNumber(quantity)}</p>
-            <span><FiPlus onClick={increaseQuantity} /></span>
-          </Quantity>
+        {
+          user.role === USER_ROLE.ADMIN
+            ?
+            <Order>
+              <Button title={'Editar prato'} className='edit-button' onClick={() => navigate(`/edit/${id}`)} />
+            </Order>
+            :
+            <Order>
+              <Quantity>
+                <span><FiMinus onClick={decreaseQuantity} /></span>
+                <p>{formatNumber(quantity)}</p>
+                <span><FiPlus onClick={increaseQuantity} /></span>
+              </Quantity>
 
-          <Button title={`pedir ∙ R$ ${totalPrice}`} icon={PiReceiptLight} />
-        </Order>
+              <Button title={`pedir ∙ R$ ${totalPrice}`} icon={PiReceiptLight} />
+            </Order>
+        }
+
+
       </section>
 
     </Container>

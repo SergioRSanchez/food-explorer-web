@@ -46,8 +46,6 @@ export function Detail() {
   }
 
   useEffect(() => {
-
-
     setTotalPrice((mealPrice * quantity).toFixed(2))
   }, [quantity]);
 
@@ -109,6 +107,7 @@ export function Detail() {
               increaseQuantity={increaseQuantity}
               decreaseQuantity={decreaseQuantity}
               image={image}
+              id={params.id}
             />
           </Content>
 
