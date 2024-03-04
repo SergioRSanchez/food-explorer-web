@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.header`
@@ -25,10 +26,12 @@ export const Container = styled.header`
     display: none;
   }
 
-  //  PARA ADMINISTRADOR MOBILE
-  /* > img + svg {
-    display: none;
-  } */
+  .logo-admin-mobile {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     padding: 24px 123px;
@@ -42,6 +45,7 @@ export const Container = styled.header`
       display: flex;
       width: fit-content;
       gap: 8px;
+      padding: 12px 16px;
     }
 
     > svg {
@@ -50,6 +54,10 @@ export const Container = styled.header`
 
     svg {
       cursor: pointer;
+    }
+
+    .new-meal {
+      width: 216px;
     }
   }
 `;
