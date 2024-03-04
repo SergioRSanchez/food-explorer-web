@@ -106,9 +106,6 @@ export function Home() {
 
           <Content>
             <h2>Refeições</h2>
-            {
-              user.role === USER_ROLE.ADMIN ? <h1>Admin</h1> : <h1>Customer</h1>
-            }
 
             <Cards>
               <Swiper
