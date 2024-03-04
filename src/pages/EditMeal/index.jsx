@@ -22,7 +22,7 @@ import { Menu } from '../../components/Menu';
 
 
 export function EditMeal() {
-  const { updateMeal, meal } = useAuth();
+  const { updateMeal, meal, deleteMeal } = useAuth();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -75,6 +75,17 @@ export function EditMeal() {
     await updateMeal({ meal, imageFile })
     navigate('/')
   };
+
+  async function handleDelete() {
+    const meal = { id: params.id }
+
+    const confirmation = window.confirm("Are you sure you want to delete this meal?")
+
+    if (confirmation) {
+      await deleteMeal({ meal })
+      navigate('/')
+    }
+  }
 
   useEffect(() => {
     api.get(`/meals/${params.id}`).then(response => {
@@ -205,7 +216,7 @@ export function EditMeal() {
                 />
 
                 <div className='btns'>
-                  <Button title="Excluir prato" />
+                  <Button title="Excluir prato" onClick={handleDelete} />
                   <Button title="Salvar alterações" onClick={handleUpdate} />
                 </div>
 

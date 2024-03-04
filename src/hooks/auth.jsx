@@ -87,6 +87,20 @@ function AuthProvider({ children }) {
     }
   };
 
+  async function deleteMeal({ meal }) {
+    try {
+      if (meal) {
+        const response = await api.delete(`/meals/${meal.id}`);
+      }
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert('An unexpected error occurred. Please try again later.');
+      }
+    }
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("@food-explorer:token");
     const user = localStorage.getItem("@food-explorer:user");
@@ -104,6 +118,7 @@ function AuthProvider({ children }) {
       signOut,
       updateMeal,
       createMeal,
+      deleteMeal,
       user: data.user,
       meal: data.meal
     }}
