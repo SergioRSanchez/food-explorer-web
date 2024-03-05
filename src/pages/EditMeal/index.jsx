@@ -154,8 +154,19 @@ export function EditMeal() {
                 <div>
                   <div className="image">
                     <label htmlFor="image">Imagem do prato</label>
-                    <label htmlFor="image"><FiUpload /> Selecione imagem para alterá-la</label>
-                    <label htmlFor="image"><FiUpload /> Selecione imagem</label>
+                    {
+                      !imageFile
+                        ?
+                        <>
+                          <label htmlFor="image"><FiUpload /> Selecione imagem para alterá-la</label>
+                          <label htmlFor="image"><FiUpload /> Selecione imagem</label>
+                        </>
+                        :
+                        <>
+                          <label htmlFor="image" className='image-label-filed'><FiUpload /> {imageFile.name}</label>
+                          <label htmlFor="image" className='image-label-filed'><FiUpload /> {imageFile.name}</label>
+                        </>
+                    }
                     <Input
                       placeholder="Selecione nova imagem do prato"
                       type="file"

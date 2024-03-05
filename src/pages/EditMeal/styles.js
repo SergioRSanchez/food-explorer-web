@@ -133,6 +133,10 @@ export const Form = styled.form`
     }
   }
 
+  .image-label-filed {
+    border: ${({ theme }) => theme.COLORS.MINT_100} 1px solid;
+  }
+
   div + label + div + label {
     margin-top: 24px;
   }
