@@ -36,21 +36,41 @@ export function Home() {
     setOpenMenu(!openMenu)
   };
 
-  const [favorite, setFavorite] = useState(false);
+  const [favorites, setFavorites] = useState([]);
 
-  function handleFavorite() {
-    setFavorite(!favorite)
-  };
+  function handleFavorite(meal) {
+    if (favorites.map(favorite => favorite.meal_id).includes(meal.id)) {
+      try {
+        const response = api.delete(`/favorites/${meal.id}`);
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          alert('An unexpected error occurred. Please try again later.');
+        }
+      }
+    } else {
+      try {
+        const response = api.post(`/favorites/${meal.id}`);
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          alert('An unexpected error occurred. Please try again later.');
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    api.get('/favorites').then(response => {
+      setFavorites(response.data)
+    });
+  }, [favorites])
 
   const [sliderPerView, setSliderPerView] = useState(2);
   const [spaceBetweenSlides, setSpaceBetweenSlides] = useState(16);
   const [enableSwiperNavigation, setEnableSwiperNavigation] = useState(false);
-
-  // useEffect(() => {
-  //   api.get('/meals?title').then(response => {
-  //     setData(response.data)
-  //   })
-  // }, [])
 
   useEffect(() => {
     api.get(`/meals?title=${search}`).then(response => {
@@ -121,9 +141,9 @@ export function Home() {
                     meal.category === 'refeicao' ?
                       <SwiperSlide key={meal.id} >
                         <Card
-                          onClickHandleFavorite={handleFavorite}
+                          onClickHandleFavorite={() => handleFavorite(meal)}
                           id={meal.id}
-                          color={favorite ? 'red' : ''}
+                          color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
                           title={meal.title}
                           description={meal.description}
                           price={meal.price}
@@ -156,9 +176,9 @@ export function Home() {
                     meal.category === 'sobremesa' ?
                       <SwiperSlide key={meal.id}>
                         <Card
-                          onClickHandleFavorite={handleFavorite}
+                          onClickHandleFavorite={() => handleFavorite(meal)}
                           id={meal.id}
-                          color={favorite ? 'red' : ''}
+                          color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
                           title={meal.title}
                           description={meal.description}
                           price={meal.price}
@@ -190,9 +210,9 @@ export function Home() {
                     meal.category === 'bebida' ?
                       <SwiperSlide key={meal.id}>
                         <Card
-                          onClickHandleFavorite={handleFavorite}
+                          onClickHandleFavorite={() => handleFavorite(meal)}
                           id={meal.id}
-                          color={favorite ? 'red' : ''}
+                          color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
                           title={meal.title}
                           description={meal.description}
                           price={meal.price}

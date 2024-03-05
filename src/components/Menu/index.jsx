@@ -38,7 +38,7 @@ export function Menu({ onClickHandleMenu, search, setSearch }) {
           />
 
           {
-            user.role === USER_ROLE.ADMIN && <button onClick={handleSignOut} onClick={() => navigate("/new")}>Novo prato</button>
+            user.role === USER_ROLE.ADMIN && <button onClick={() => navigate("/new")}>Novo prato</button>
           }
           <button onClick={handleSignOut}>Sair</button>
         </Content>
