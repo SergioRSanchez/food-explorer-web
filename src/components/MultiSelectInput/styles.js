@@ -39,7 +39,6 @@ export const Button = styled.button`
   padding: 10px 16px;
   gap: 8px;
   border-radius: 8px;
-  /* border: 1px dashed ${({ theme }) => theme.COLORS.LIGHT_500}; */
   border: none;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%237C7C8AFF' stroke-width='2' stroke-dasharray='6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   border-radius: 8px;
@@ -54,7 +53,6 @@ export const Button = styled.button`
 
   &:hover {
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    /* border: 1px dashed ${({ theme }) => theme.COLORS.LIGHT_100}; */
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='white' stroke-width='2' stroke-dasharray='6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
     border-radius: 8px;
   }

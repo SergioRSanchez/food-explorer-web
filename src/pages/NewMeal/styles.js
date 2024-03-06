@@ -93,9 +93,6 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
   }
 
-  /* input[type=file]::-webkit-file-upload-button {
-    display: none;
-  } */
   input[type=file],
   .image label + div {
     display: none;
@@ -125,6 +122,10 @@ export const Form = styled.form`
       height: 24px;
       margin-right: 8px;
     }
+  }
+
+  .image-label-filed {
+    border: ${({ theme }) => theme.COLORS.MINT_100} 1px solid;
   }
 
   div + label + div + label {

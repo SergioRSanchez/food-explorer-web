@@ -37,11 +37,14 @@ export function Home() {
   };
 
   const [favorites, setFavorites] = useState([]);
+  const [updateFavorites, setUpdateFavorites] = useState(false);
 
   function handleFavorite(meal) {
     if (favorites.map(favorite => favorite.meal_id).includes(meal.id)) {
       try {
-        const response = api.delete(`/favorites/${meal.id}`);
+        api.delete(`/favorites/${meal.id}`).then(() => {
+          setUpdateFavorites(prevState => !prevState);
+        });
       } catch (error) {
         if (error.response) {
           alert(error.response.data.message);
@@ -51,7 +54,9 @@ export function Home() {
       }
     } else {
       try {
-        const response = api.post(`/favorites/${meal.id}`);
+        api.post(`/favorites/${meal.id}`).then(() => {
+          setUpdateFavorites(prevState => !prevState);
+        });
       } catch (error) {
         if (error.response) {
           alert(error.response.data.message);
@@ -64,9 +69,9 @@ export function Home() {
 
   useEffect(() => {
     api.get('/favorites').then(response => {
-      setFavorites(response.data)
+      setFavorites(response.data);
     });
-  }, [favorites])
+  }, [updateFavorites]);
 
   const [sliderPerView, setSliderPerView] = useState(2);
   const [spaceBetweenSlides, setSpaceBetweenSlides] = useState(16);

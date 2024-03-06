@@ -18,7 +18,6 @@ export function SelectInput({ selectedOption, setSelectedOption }) {
         value={selectedOption}
         onChange={setSelectedOption}
         classNamePrefix="react-select"
-        // isMulti
         isSearchable
         styles={{
           control: (provided) => ({

@@ -36,7 +36,6 @@ export const Banner = styled.div`
     width: 191px;
     height: 149px;
     flex-shrink: 0;
-    /* opacity: .8; */
     bottom: 0;
     left: -30px;
   }

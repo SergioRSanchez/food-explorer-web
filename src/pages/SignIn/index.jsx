@@ -26,6 +26,12 @@ export function SignIn() {
     signIn({ email, password })
   }
 
+  function onEnterKeyPress(e) {
+    if (e.key === 'Enter') {
+      handleSignIn();
+    }
+  }
+
   return (
     <Container>
       <Logo />
@@ -39,6 +45,7 @@ export function SignIn() {
           icon={FiMail}
           id="email"
           onChange={(e) => setEmail(e.target.value)}
+          onKeyPress={onEnterKeyPress}
         />
 
         <label htmlFor="password">Senha</label>
@@ -49,6 +56,7 @@ export function SignIn() {
           onClickHandlePasswordType={handleShowPassword}
           id="password"
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={onEnterKeyPress}
         />
 
         <Button title="Entrar" onClick={handleSignIn} />

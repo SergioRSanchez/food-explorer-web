@@ -41,6 +41,12 @@ export function SignUp() {
 
   }
 
+  function onEnterKeyPress(e) {
+    if (e.key === 'Enter') {
+      handleSignUp();
+    }
+  }
+
   return (
     <Container>
       <Logo />
@@ -54,6 +60,7 @@ export function SignUp() {
           icon={FiUser}
           id="name"
           onChange={(e) => setName(e.target.value)}
+          onKeyPress={onEnterKeyPress}
         />
 
         <label htmlFor="email">Email</label>
@@ -63,6 +70,7 @@ export function SignUp() {
           icon={FiMail}
           id="email"
           onChange={(e) => setEmail(e.target.value)}
+          onKeyPress={onEnterKeyPress}
         />
 
         <label htmlFor="password">Senha</label>
@@ -73,6 +81,7 @@ export function SignUp() {
           onClickHandlePasswordType={handleShowPassword}
           id="password"
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={onEnterKeyPress}
         />
 
         <Button title="Criar conta" onClick={handleSignUp} />

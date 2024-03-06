@@ -89,7 +89,6 @@ export const Container = styled.div`
     height: auto;
 
     > span > svg {
-      
       top: 16px;
       right: 16px;
       width: 24px;
@@ -106,6 +105,11 @@ export const Container = styled.div`
       font-weight: 700;
       line-height: 140%;
       
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    svg {
       margin-top: 15px;
       margin-bottom: 15px;
     }

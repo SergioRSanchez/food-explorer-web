@@ -26,7 +26,7 @@ export function Card({ onClickHandleFavorite, color, title, description, price, 
           <span><FiHeart color={color} fill={color} onClick={onClickHandleFavorite} size={24} /></span>
       }
       <Link to={`/details/${id}`}><img src={image} alt={`Foto de um(a) ${title}`} /></Link>
-      <Link to={`/details/${id}`}><p>{title}<p><FiChevronRight /></p></p></Link>
+      <Link to={`/details/${id}`}><p>{title}<FiChevronRight /></p></Link>
       <small>{description}</small>
       <p>R$ {(price).toFixed(2)}</p>
       {

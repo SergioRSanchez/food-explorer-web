@@ -16,7 +16,6 @@ export default createGlobalStyle`
 
   body, input, button, textarea {
     font-family: 'Poppins', sans-serif;
-    /* font-family: 'Roboto', sans-serif; */
     font-weight: 400;
     font-size: 16px;
     outline: none;
@@ -30,8 +29,4 @@ export default createGlobalStyle`
     cursor: pointer;
     transition: all .3s;
   }
-
-  /* button:hover, a:hover {
-    filter: brightness(.9);
-  } */
 `
