@@ -26,6 +26,7 @@ export const Header = styled.div`
 
   > p {
     display: flex;
+    z-index: 10;
   }
 
   svg {
