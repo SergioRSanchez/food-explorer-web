@@ -27,7 +27,7 @@ export function Header({ onClickHandleMenu, search, setSearch }) {
 
   return (
     <Container>
-      <FiMenu size={24} onClick={onClickHandleMenu} />
+      <FiMenu size={24} onClick={onClickHandleMenu} className='menu' />
       {
         user.role === USER_ROLE.ADMIN
           ?

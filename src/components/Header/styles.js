@@ -33,6 +33,10 @@ export const Container = styled.header`
     transform: translate(-50%, -50%);
   }
 
+  .menu {
+    z-index: 100;
+  }
+
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     padding: 24px 123px;
 
