@@ -5,11 +5,11 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
+  margin-top: 1.6rem;
 
   img {
-    width: 264px;
-    height: 264px;
+    width: 26.4rem;
+    height: 26.4rem;
     border-radius: 50%;
   }
 
@@ -25,25 +25,25 @@ export const Container = styled.div`
       align-items: center;
     }
     
-    margin-top: 42px;
-    gap: 48px;
+    margin-top: 4.2rem;
+    gap: 4.8rem;
 
     img {
-      width: 390px;
-      height: 390px;
+      width: 39rem;
+      height: 39rem;
     }
   }
 `;
 
 export const Content = styled.div`
-  margin-top: 16px;
+  margin-top: 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  width: 316px;
+  gap: 2.4rem;
+  width: 31.6rem;
 
   p {
-    font-size: 27px;
+    font-size: 2.7rem;
     font-weight: 500;
     line-height: 140%;
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
@@ -52,7 +52,7 @@ export const Content = styled.div`
 
   p + h2 {
     text-align: center;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 400;
     line-height: 140%;
   }
@@ -64,18 +64,18 @@ export const Content = styled.div`
   div {
     display: flex;
     flex-direction: row;
-    gap: 24px;
+    gap: 2.4rem;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   div h4 {
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 500;
-    line-height: 24px;
+    line-height: 2.4rem;
 
-    padding: 4px 8px;
-    border-radius: 5px;
+    padding: .4rem .8rem;
+    border-radius: .5rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_1000};
   }
 
@@ -83,7 +83,7 @@ export const Content = styled.div`
     width: 100%;
 
     p {
-      font-size: 40px;
+      font-size: 4rem;
       text-align: left;
     }
 
@@ -93,11 +93,11 @@ export const Content = styled.div`
 
     h2 + h3 {
       display: block;
-      font-size: 24px;
+      font-size: 2.4rem;
       font-style: normal;
       font-weight: 400;
       line-height: 140%;
-      max-width: 687px;
+      max-width: 68.7rem;
     }
 
     div {
@@ -109,31 +109,31 @@ export const Content = styled.div`
 export const Order = styled.div`
   display: flex;
 
-  margin-top: 48px;
+  margin-top: 4.8rem;
 
-  gap: 16px;
+  gap: 1.6rem;
 
   button {
-    font-size: 9px;
+    font-size: .9rem;
     font-weight: 500;
-    line-height: 16.225px;
+    line-height: 1.6225rem;
 
-    padding: 8px 16px;
-    gap: 5px;
+    padding: .8rem 1.6rem;
+    gap: .5rem;
 
     svg {
-      width: 21px;
-      height: 21px;
+      width: 2.1rem;
+      height: 2.1rem;
     }
   }
 
   .edit-button {
-    font-size: 14px;
-    padding: 12px 24px;
+    font-size: 1.4rem;
+    padding: 1.2rem 2.4rem;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    gap: 33px;
+    gap: 3.3rem;
 
     div {
       align-items: center;
@@ -143,10 +143,10 @@ export const Order = styled.div`
     button {
       display: flex;
       width: fit-content;
-      font-size: 14px;
-      line-height: 24px;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
 
-      padding: 12px 24px;
+      padding: 1.2rem 2.4rem;
 
       svg {
         display: none;
@@ -157,18 +157,18 @@ export const Order = styled.div`
 
 export const Quantity = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 1.6rem;
   align-items: center;
 
   svg {
-    width: 27px;
-    height: 27px;
+    width: 2.7rem;
+    height: 2.7rem;
     cursor: pointer;
   }
 
    p {
     font-family: Roboto;
-    font-size: 22px;
+    font-size: 2.2rem;
     font-weight: 700;
     line-height: 160%;
    }

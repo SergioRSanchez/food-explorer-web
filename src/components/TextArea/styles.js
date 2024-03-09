@@ -4,10 +4,10 @@ export const Container = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.DARK_900};
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
-  height: 172px;
+  height: 17.2re,;
 
-  border-radius: 8px;
-  padding: 12px 14px;
+  border-radius: .8rem;
+  padding: 1.2rem 1.4rem;
 
   textarea {
     resize: none;
@@ -18,7 +18,7 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     font-family: Roboto;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 100%;
 
     &::placeholder {

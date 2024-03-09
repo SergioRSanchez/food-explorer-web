@@ -13,14 +13,14 @@ export const Container = styled(Link)`
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
   span {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 500;
     line-height: 140%;
     display: flex;
 
     svg {
-      width: 32px;
-      height: 32px;
+      width: 3.2rem;
+      height: 3.2rem;
     }
   }
 

@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK_900};
-  border-radius: 8px;
+  border-radius: .8rem;
   color: ${({ theme }) => theme.COLORS.LIGHT_400};
 
   .react-select__menu-list,
   .react-select__option {
     background-color: ${({ theme }) => theme.COLORS.DARK_900};
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
-    border-radius: 8px;
+    border-radius: .8rem;
   }
 
   .react-select__menu {

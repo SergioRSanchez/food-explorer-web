@@ -5,13 +5,13 @@ export const Container = styled.button`
   background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
   color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
-  padding: 12px 32px;
+  padding: 1.2rem 3.2rem;
   border: 0;
-  border-radius: 5px;
+  border-radius: .5rem;
 
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 2.4rem;
 
   display: flex;
   align-items: center;

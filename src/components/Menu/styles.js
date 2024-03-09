@@ -17,10 +17,10 @@ export const Header = styled.div`
   display: flex;
   margin: 0;
   align-items: center;
-  gap: 16px;
-  font-size: 22px;
+  gap: 1..6rem;
+  font-size: 2.2rem;
 
-  padding: 60px 28px 24px;
+  padding: 6rem 2.8rem 2.4rem;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_700};
 
@@ -34,17 +34,17 @@ export const Header = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 36px 28px;
+  padding: 3.6rem 2..8rem;
 
   button {
     display: flex;
     background-color: transparent;
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    font-size: 24px;
+    font-size: 2.4rem;
     line-height: 140%;
-    margin-top: 36px;
+    margin-top: 3.6rem;
     border: none;
-    padding: 10px;
+    padding: 1rem;
     width: 100%;
 
 

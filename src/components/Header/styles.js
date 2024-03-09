@@ -14,7 +14,7 @@ export const Container = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  padding: 60px 28px 24px;
+  padding: 6rem 2.8rem 2.4rem;
 
   background-color: ${({ theme }) => theme.COLORS.DARK_700};
 
@@ -28,7 +28,7 @@ export const Container = styled.header`
 
   .logo-admin-mobile {
     position: absolute;
-    top: 70px;
+    top: 7rem;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -38,9 +38,9 @@ export const Container = styled.header`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 24px 123px;
+    padding: 2.4rem 12.3rem;
 
-    gap: 32px;
+    gap: 3.2rem;
 
     div, p {
       display: flex;
@@ -48,8 +48,8 @@ export const Container = styled.header`
     button {
       display: flex;
       width: fit-content;
-      gap: 8px;
-      padding: 12px 16px;
+      gap: .8rem;
+      padding: 1.2rem 1.6rem;
     }
 
     > svg {
@@ -61,7 +61,7 @@ export const Container = styled.header`
     }
 
     .new-meal {
-      width: 216px;
+      width: 21.6rem;
     }
   }
 `;
