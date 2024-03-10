@@ -17,7 +17,7 @@ export const Header = styled.div`
   display: flex;
   margin: 0;
   align-items: center;
-  gap: 1..6rem;
+  gap: 1.6rem;
   font-size: 2.2rem;
 
   padding: 6rem 2.8rem 2.4rem;
