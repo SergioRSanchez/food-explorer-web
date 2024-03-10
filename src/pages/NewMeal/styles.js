@@ -12,9 +12,9 @@ export const Container = styled.div`
 
   footer {
     position: relative;
-    margin-top: 54px;
+    margin-top: 5.4rem;
     max-width: 100vw;
-    width: calc(100vw - 17px);
+    width: calc(100vw - 1.7rem);
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -27,36 +27,36 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-top: calc(114px + 11px);
-  padding: 0 32px;
+  margin-top: calc(11.4rem + 1.1rem);
+  padding: 0 3.2rem;
 
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2.4rem;
 
   button svg {
-    width: 22px;
-    height: 22px;
+    width: 2.2rem;
+    height: 2.2rem;
   }
 
   button span {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    margin-top: calc(96px + 40px);
-    padding: 0 123px;
-    padding-bottom: calc(54px + 77px);
+    margin-top: calc(9.6rem + 4rem);
+    padding: 0 12.3rem;
+    padding-bottom: calc(5.4rem + 7.7rem);
   }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 2.4rem;
 
   > h1 {
-    font-size: 32px;
+    font-size: 3.2rem;
     font-weight: 500;
     line-height: 140%;
   }
@@ -69,7 +69,7 @@ export const Form = styled.form`
   > h1 +div + div {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 2.4rem;
   }
 
   .image,
@@ -79,16 +79,16 @@ export const Form = styled.form`
   .price {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1.6rem;
   }
 
   .image label + label {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 
   label {
     font-family: Roboto;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 100%;
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
   }
@@ -110,30 +110,30 @@ export const Form = styled.form`
     background-color: ${({ theme }) => theme.COLORS.DARK_900};
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
-    border-radius: 8px;
+    border-radius: .8rem;
     font-family: 'Roboto', sans-serif;
-    height: 48px;
+    height: 4.8rem;
     width: 100%;
     cursor: pointer;
-    padding: 12px 32px;
+    padding: 1.2rem 3.2rem;
 
     svg {
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: .8rem;
     }
   }
 
   .image-label-filed {
-    border: ${({ theme }) => theme.COLORS.MINT_100} 1px solid;
+    border: ${({ theme }) => theme.COLORS.MINT_100} .1rem solid;
   }
 
   div + label + div + label {
-    margin-top: 24px;
+    margin-top: 2.4rem;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    gap: 32px;
+    gap: 3.2rem;
 
     h1:nth-child(1) {
       display: none;
@@ -147,12 +147,12 @@ export const Form = styled.form`
     > h1 +div + div {
       display: flex;
       flex-direction: row;
-      gap: 32px;
+      gap: 3.2rem;
       width: 100%;
     }
 
     .image label + label {
-      font-size: 16px;
+      font-size: 1.6rem;
       width: max-content;
     }
 
@@ -168,11 +168,11 @@ export const Form = styled.form`
     }
 
     .category {
-      width: 364px;
+      width: 36.4rem;
     }
 
     .price {
-      width: 251px;
+      width: 25.1rem;
     }
 
     > button {

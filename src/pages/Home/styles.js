@@ -12,66 +12,66 @@ export const Container = styled.div`
 
   footer {
     position: relative;
-    margin-top: 62px;
+    margin-top: 6.2rem;
     max-width: 100vw;
-    width: calc(100vw - 17px);
+    width: calc(100vw - 1.7rem);
   }
 `;
 
 export const Banner = styled.div`
   display: flex;
   align-items: center;
-  margin-top: calc(114px + 44px);
+  margin-top: calc(11.4rem + 4.4rem);
   position: relative;
-  padding: 36px 21px 22px 153px;
+  padding: 3.6rem 2.1rem 2.2rem 15.3rem;
 
-  margin-left: 30px;
-  margin-right: 16px;
+  margin-left: 3rem;
+  margin-right: 1.6rem;
 
   background: ${({ theme }) => theme.COLORS.GRADIENTS_200};
-  border-radius: 3px;
+  border-radius: .3rem;
 
   img {
     position: absolute;
-    width: 191px;
-    height: 149px;
+    width: 19.1rem;
+    height: 14.9rem;
     flex-shrink: 0;
     bottom: 0;
-    left: -30px;
+    left: -3rem;
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 140%;
-    margin-bottom: 3px;
+    margin-bottom: .3rem;
   }
 
   p {
-    font-size: 12px;
+    font-size: 1.2rem;
     line-height: 140%;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    margin-top: calc(114px + 164px);
-    padding: 88px 80px 92px 598px;
+    margin-top: calc(11.4rem + 16.4rem);
+    padding: 8.8rem 8rem 9.2rem 59.8rem;
 
-    margin-left: 123px;
-    margin-right: 123px;
+    margin-left: 12.3rem;
+    margin-right: 12.3rem;
 
     img {
-      width: 632px;
-      height: 406px;
+      width: 63.2rem;
+      height: 40.6rem;
       bottom: 0;
-      left: -60px;
+      left: -6rem;
     }
 
     h2 {
-      font-size: 40px;
-      margin-bottom: 8px;
+      font-size: 4rem;
+      margin-bottom: .8rem;
     }
 
     p {
-      font-size: 16px;
+      font-size: 1.6rem;
       line-height: 100%;
     }
   }
@@ -80,25 +80,25 @@ export const Banner = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 15px;
+  padding: 0 1.5rem;
 
-  margin-top: 62px;
+  margin-top: 6.2rem;
 
   h2 {
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 500;
     line-height: 140%;
-    margin: 0 0 28px 13px;
+    margin: 0 0 2.8rem 1.3rem;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 0 123px;
+    padding: 0 12.3rem;
 
-    margin-top: 49px;
+    margin-top: 4.9rem;
 
     h2 {
-      font-size: 32px;
-      margin: 0 0 28px 0px;
+      font-size: 3.2rem;
+      margin: 0 0 2.8rem 0;
     }
   }
 `;
@@ -106,7 +106,7 @@ export const Content = styled.div`
 export const Cards = styled.div`
   display: flex;
   --swiper-theme-color: ${({ theme }) => theme.COLORS.LIGHT_100};
-  --swiper-navigation-size: 40px;
+  --swiper-navigation-size: 4rem;
 
   .swiper {
     width: 100%;

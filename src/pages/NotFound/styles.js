@@ -14,11 +14,11 @@ export const Container = styled.div`
 
   a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 2rem;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
   }
 `;

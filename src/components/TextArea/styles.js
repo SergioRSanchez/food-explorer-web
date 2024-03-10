@@ -12,7 +12,7 @@ export const Container = styled.div`
   textarea {
     resize: none;
     width: 100%;
-    height: 100%;
+    height: 17.2rem;
     background-color: transparent;
     border: none;
     color: ${({ theme }) => theme.COLORS.LIGHT_100};

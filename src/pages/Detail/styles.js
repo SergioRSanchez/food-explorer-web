@@ -10,16 +10,16 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-top: calc(114px + 16px + 21px);
-  margin-bottom: calc(54px + 77px);
-  padding: 0 56px;
+  margin-top: calc(11.4rem + 1.6rem + 2.1rem);
+  margin-bottom: calc(5.4rem + 7.7rem);
+  padding: 0 5.6rem;
 
   div {
     align-items: center;
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 0 121px;
+    padding: 0 12.1rem;
 
     section div {
       align-items: start;
