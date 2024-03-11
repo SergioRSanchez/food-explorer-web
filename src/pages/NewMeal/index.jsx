@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
+import { TailSpin } from 'react-loading-icons';
 import { useNavigate } from 'react-router-dom';
 
 import { api } from '../../services/api';
@@ -40,6 +41,8 @@ export function NewMeal() {
 
   const [ingredientToAdd, setIngredientToAdd] = useState('');
 
+  const [isLoading, setIsLoading] = useState(false);
+
   function handleChangeImage(e) {
     const file = e.target.files[0];
     setImageFile(file);
@@ -63,6 +66,8 @@ export function NewMeal() {
   }
 
   async function handleCreate() {
+    setIsLoading(true);
+
     const ingredientsListNames = ingredientsList.map(name => { return (name.name) })
 
     const meal = { title: mealTitle, ingredients: ingredientsListNames, price: mealPrice, description: mealDescription, category: selectedOption.value }
@@ -150,11 +155,17 @@ export function NewMeal() {
             onChange={handleDescriptionText}
           />
 
-          <Button
-            title="Salvar alterações"
-            onClick={handleCreate}
-            disabled={mealTitle == '' || mealPrice == '' || mealDescription == '' || selectedOption == {} || ingredientsList == []}
-          />
+          {
+            isLoading
+              ?
+              <Button title="Carregando" icon={TailSpin} />
+              :
+              <Button
+                title="Salvar alterações"
+                onClick={handleCreate}
+                disabled={mealTitle == '' || mealPrice == '' || mealDescription == '' || selectedOption == {} || ingredientsList == []}
+              />
+          }
 
         </Form>
       </Content>
