@@ -119,12 +119,6 @@ export const Order = styled.div`
     line-height: 1.6225rem;
 
     padding: .8rem 1.6rem;
-    gap: .5rem;
-
-    svg {
-      width: 2.1rem;
-      height: 2.1rem;
-    }
   }
 
   .edit-button {

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
+import { TailSpin } from 'react-loading-icons'
+
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/auth';
@@ -20,9 +22,13 @@ export function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const { signIn } = useAuth();
 
   function handleSignIn() {
+    setIsLoading(true);
+
     signIn({ email, password })
   }
 
@@ -59,7 +65,12 @@ export function SignIn() {
           onKeyPress={onEnterKeyPress}
         />
 
-        <Button title="Entrar" onClick={handleSignIn} />
+        {
+          isLoading ?
+            <Button title="Carregando" icon={TailSpin} />
+            :
+            <Button title="Entrar" onClick={handleSignIn} />
+        }
 
         <Link to="/register">Criar uma conta</Link>
 

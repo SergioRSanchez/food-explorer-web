@@ -17,6 +17,13 @@ export const Container = styled.button`
   align-items: center;
   justify-content: center;
 
+  gap: .5rem;
+
+  svg {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
   &:disabled {
     background-color: ${({ theme }) => theme.COLORS.TOMATO_400};
     cursor: not-allowed;
