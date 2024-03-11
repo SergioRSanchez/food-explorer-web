@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FiUpload } from "react-icons/fi";
 import { TbCurrencyReal } from "react-icons/tb";
+import { TailSpin } from 'react-loading-icons';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { api } from '../../services/api';
@@ -41,6 +42,9 @@ export function EditMeal() {
 
   const [openMenu, setOpenMenu] = useState(false);
 
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+
   function handleOpenMenu() {
     setOpenMenu(!openMenu)
   };
@@ -68,6 +72,7 @@ export function EditMeal() {
   };
 
   async function handleUpdate() {
+    setIsUpdating(true);
 
     const ingredientsListNames = ingredientsList.map(name => { return (name.name) })
 
@@ -77,6 +82,7 @@ export function EditMeal() {
   };
 
   async function handleDelete() {
+    setIsDeleting(true);
     const meal = { id: params.id }
 
     const confirmation = window.confirm("Are you sure you want to delete this meal?")
@@ -227,8 +233,20 @@ export function EditMeal() {
                 />
 
                 <div className='btns'>
-                  <Button title="Excluir prato" onClick={handleDelete} />
-                  <Button title="Salvar alterações" onClick={handleUpdate} />
+                  {
+                    isDeleting
+                      ?
+                      <Button title="Carregando" icon={TailSpin} />
+                      :
+                      <Button title="Excluir prato" onClick={handleDelete} />
+                  }
+                  {
+                    isUpdating
+                      ?
+                      <Button title="Carregando" icon={TailSpin} />
+                      :
+                      <Button title="Salvar alterações" onClick={handleUpdate} />
+                  }
                 </div>
 
               </Form>
