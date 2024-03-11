@@ -27,6 +27,7 @@ export const Container = styled.div`
   footer {
     position: fixed;
     width: 100%;
+    bottom: 0;
   }
 `;
 

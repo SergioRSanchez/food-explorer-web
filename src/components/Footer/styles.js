@@ -4,10 +4,10 @@ import { DEVICE_BREAKPOINTS } from '../../styles/deviceBreakpoints';
 
 export const Container = styled.footer`
   margin: 0;
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
-  width: 100vw;
+  width: calc(100vw - 1.7rem);
   padding: 2.4rem 2.8rem;
   display: flex;
   align-items: center;

@@ -11,10 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   footer {
-    position: relative;
     margin-top: 6.2rem;
-    max-width: 100vw;
-    width: calc(100vw - 1.7rem);
   }
 `;
 
