@@ -42,8 +42,8 @@ export function Menu({ onClickHandleMenu, search, setSearch }) {
           }
           <button onClick={handleSignOut}>Sair</button>
         </Content>
+        <Footer />
       </Container>
-      <Footer />
     </>
   )
 }

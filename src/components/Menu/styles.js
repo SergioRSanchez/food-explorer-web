@@ -11,6 +11,23 @@ export const Container = styled.div`
   width: 100vw;
   top: 0;
   z-index: 60;
+
+  @keyframes appear {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  animation: appear 0.2s;
+
+  footer {
+    position: fixed;
+    width: 100%;
+  }
 `;
 
 export const Header = styled.div`
