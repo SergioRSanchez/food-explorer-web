@@ -23,7 +23,7 @@ import { Menu } from '../../components/Menu';
 
 
 export function EditMeal() {
-  const { updateMeal, meal, deleteMeal } = useAuth();
+  const { updateMeal, meal, deleteMeal, isUpdating, isDeleting } = useAuth();
   const params = useParams();
   const navigate = useNavigate();
 
@@ -41,9 +41,6 @@ export function EditMeal() {
   const [imageFile, setImageFile] = useState(null);
 
   const [openMenu, setOpenMenu] = useState(false);
-
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false);
 
   function handleOpenMenu() {
     setOpenMenu(!openMenu)
@@ -72,8 +69,6 @@ export function EditMeal() {
   };
 
   async function handleUpdate() {
-    setIsUpdating(true);
-
     const ingredientsListNames = ingredientsList.map(name => { return (name.name) })
 
     const meal = { id: params.id, title: mealTitle, ingredientsList: ingredientsListNames, price: mealPrice, description: mealDescription, category: selectedOption.value }
@@ -82,7 +77,6 @@ export function EditMeal() {
   };
 
   async function handleDelete() {
-    setIsDeleting(true);
     const meal = { id: params.id }
 
     const confirmation = window.confirm("Are you sure you want to delete this meal?")

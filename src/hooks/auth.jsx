@@ -8,10 +8,14 @@ export const AuthContext = createContext({});
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
   const [idOfCreatedMeal, setIdOfCreatedMeal] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const params = useParams();
 
   async function signIn({ email, password }) {
+    setIsLoading(true);
     try {
       const response = await api.post('/sessions', { email, password });
       const { user } = response.data;
@@ -19,12 +23,15 @@ function AuthProvider({ children }) {
       localStorage.setItem("@food-explorer:user", JSON.stringify(user));
 
       setData({ user });
+      setIsLoading(false);
 
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
+        setIsLoading(false);
       } else {
         alert('An unexpected error occurred. Please try again later.');
+        setIsLoading(false);
       }
     }
   };
@@ -36,6 +43,7 @@ function AuthProvider({ children }) {
   };
 
   async function createMeal({ meal, imageFile }) {
+    setIsLoading(true);
     try {
       if (meal) {
         const response = await api.post('/meals', meal);
@@ -51,16 +59,20 @@ function AuthProvider({ children }) {
       }
 
       alert("Meal successfully created!");
+      setIsLoading(false);
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
+        setIsLoading(false);
       } else {
         alert('An unexpected error occurred. Please try again later.');
+        setIsLoading(false);
       }
     }
   };
 
   async function updateMeal({ meal, imageFile }) {
+    setIsUpdating(true);
     try {
       if (meal) {
         const response = await api.put(`/meals/${meal.id}`, meal);
@@ -74,25 +86,32 @@ function AuthProvider({ children }) {
       }
 
       alert("Meal successfully updated!");
+      setIsUpdating(false);
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
+        setIsUpdating(false);
       } else {
         alert('An unexpected error occurred. Please try again later.');
+        setIsUpdating(false);
       }
     }
   };
 
   async function deleteMeal({ meal }) {
+    setIsDeleting(true);
     try {
       if (meal) {
         const response = await api.delete(`/meals/${meal.id}`);
+        setIsDeleting(false);
       }
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message);
+        setIsDeleting(false);
       } else {
         alert('An unexpected error occurred. Please try again later.');
+        setIsDeleting(false);
       }
     }
   };
@@ -113,7 +132,10 @@ function AuthProvider({ children }) {
       createMeal,
       deleteMeal,
       user: data.user,
-      meal: data.meal
+      meal: data.meal,
+      isLoading,
+      isUpdating,
+      isDeleting
     }}
     >
       {children}

@@ -21,7 +21,7 @@ import imagePlaceholder from '../../assets/placeholder.jpg';
 import { Container, Content, Form } from './styles';
 
 export function NewMeal() {
-  const { createMeal, meal } = useAuth();
+  const { createMeal, meal, isLoading } = useAuth();
   const navigate = useNavigate();
 
 
@@ -40,8 +40,6 @@ export function NewMeal() {
 
 
   const [ingredientToAdd, setIngredientToAdd] = useState('');
-
-  const [isLoading, setIsLoading] = useState(false);
 
   function handleChangeImage(e) {
     const file = e.target.files[0];
@@ -66,8 +64,6 @@ export function NewMeal() {
   }
 
   async function handleCreate() {
-    setIsLoading(true);
-
     const ingredientsListNames = ingredientsList.map(name => { return (name.name) })
 
     const meal = { title: mealTitle, ingredients: ingredientsListNames, price: mealPrice, description: mealDescription, category: selectedOption.value }
