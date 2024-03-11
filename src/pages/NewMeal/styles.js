@@ -10,12 +10,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  footer {
-    position: relative;
-    margin-top: 5.4rem;
-    max-width: 100vw;
-    width: calc(100vw - 1.7rem);
-  }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     footer {
@@ -27,7 +21,12 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  &[data-menu-is-open="true"] {
+    display: none;
+  }
+
   margin-top: calc(11.4rem + 1.1rem);
+  margin-bottom: 5.4rem;
   padding: 0 3.2rem;
 
   display: flex;

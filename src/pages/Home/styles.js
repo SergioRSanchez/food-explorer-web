@@ -16,6 +16,10 @@ export const Container = styled.div`
 `;
 
 export const Banner = styled.div`
+  &[data-menu-is-open="true"] {
+    display: none;
+  }
+
   display: flex;
   align-items: center;
   margin-top: calc(11.4rem + 4.4rem);
@@ -75,6 +79,10 @@ export const Banner = styled.div`
 `;
 
 export const Content = styled.div`
+  &[data-menu-is-open="true"] {
+    display: none;
+  }
+  
   display: flex;
   flex-direction: column;
   padding: 0 1.5rem;

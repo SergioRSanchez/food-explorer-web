@@ -110,138 +110,134 @@ export function Home() {
   return (
     <Container>
 
+      <Menu
+        search={search}
+        setSearch={setSearch}
+        onClickHandleMenu={handleOpenMenu}
+        openMenu={openMenu}
+      />
 
-      {!openMenu
-        ?
-        <>
-          <Header
-            search={search}
-            setSearch={setSearch}
-            onClickHandleMenu={handleOpenMenu}
-          />
+      <Header
+        data-menu-is-open={openMenu}
+        search={search}
+        setSearch={setSearch}
+        onClickHandleMenu={handleOpenMenu}
+      />
 
-          <Banner>
-            <img src={homeBanner} alt="Imagem com vários macarons de diversas cores." />
+      <Banner data-menu-is-open={openMenu}>
+        <img src={homeBanner} alt="Imagem com vários macarons de diversas cores." />
 
-            <div>
-              <h2>Sabores inigualáveis</h2>
-              <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
-            </div>
-          </Banner>
+        <div>
+          <h2>Sabores inigualáveis</h2>
+          <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+        </div>
+      </Banner>
 
-          <Content>
-            <h2>Refeições</h2>
+      <Content data-menu-is-open={openMenu}>
+        <h2>Refeições</h2>
 
-            <Cards>
-              <Swiper
-                slidesPerView={sliderPerView}
-                spaceBetween={spaceBetweenSlides}
-                navigation={enableSwiperNavigation}
-                freeMode={true}
-                modules={[FreeMode]}
-              >
-                {
-                  data &&
-                  data.map(meal => (
-                    meal.category === 'refeicao' ?
-                      <SwiperSlide key={meal.id} >
-                        <Card
-                          onClickHandleFavorite={() => handleFavorite(meal)}
-                          id={meal.id}
-                          color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
-                          title={meal.title}
-                          description={meal.description}
-                          price={meal.price}
-                          image={`${api.defaults.baseURL}/files/${meal.image}`}
-                        />
-                      </SwiperSlide>
-                      : null
-                  ))
-                }
+        <Cards>
+          <Swiper
+            slidesPerView={sliderPerView}
+            spaceBetween={spaceBetweenSlides}
+            navigation={enableSwiperNavigation}
+            freeMode={true}
+            modules={[FreeMode]}
+          >
+            {
+              data &&
+              data.map(meal => (
+                meal.category === 'refeicao' ?
+                  <SwiperSlide key={meal.id} >
+                    <Card
+                      onClickHandleFavorite={() => handleFavorite(meal)}
+                      id={meal.id}
+                      color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
+                      title={meal.title}
+                      description={meal.description}
+                      price={meal.price}
+                      image={`${api.defaults.baseURL}/files/${meal.image}`}
+                    />
+                  </SwiperSlide>
+                  : null
+              ))
+            }
 
-              </Swiper>
-            </Cards>
+          </Swiper>
+        </Cards>
 
-          </Content>
+      </Content>
 
-          <Content>
-            <h2>Sobremesas</h2>
+      <Content data-menu-is-open={openMenu}>
+        <h2>Sobremesas</h2>
 
-            <Cards>
-              <Swiper
-                slidesPerView={sliderPerView}
-                spaceBetween={spaceBetweenSlides}
-                navigation={enableSwiperNavigation}
-                freeMode={true}
-                modules={[FreeMode]}
-              >
-                {
-                  data &&
-                  data.map(meal => (
-                    meal.category === 'sobremesa' ?
-                      <SwiperSlide key={meal.id}>
-                        <Card
-                          onClickHandleFavorite={() => handleFavorite(meal)}
-                          id={meal.id}
-                          color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
-                          title={meal.title}
-                          description={meal.description}
-                          price={meal.price}
-                          image={`${api.defaults.baseURL}/files/${meal.image}`}
-                        />
-                      </SwiperSlide>
-                      : null
-                  ))
-                }
-              </Swiper>
-            </Cards>
+        <Cards>
+          <Swiper
+            slidesPerView={sliderPerView}
+            spaceBetween={spaceBetweenSlides}
+            navigation={enableSwiperNavigation}
+            freeMode={true}
+            modules={[FreeMode]}
+          >
+            {
+              data &&
+              data.map(meal => (
+                meal.category === 'sobremesa' ?
+                  <SwiperSlide key={meal.id}>
+                    <Card
+                      onClickHandleFavorite={() => handleFavorite(meal)}
+                      id={meal.id}
+                      color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
+                      title={meal.title}
+                      description={meal.description}
+                      price={meal.price}
+                      image={`${api.defaults.baseURL}/files/${meal.image}`}
+                    />
+                  </SwiperSlide>
+                  : null
+              ))
+            }
+          </Swiper>
+        </Cards>
 
-          </Content>
+      </Content>
 
-          <Content>
-            <h2>Bebidas</h2>
+      <Content data-menu-is-open={openMenu}>
+        <h2>Bebidas</h2>
 
-            <Cards>
-              <Swiper
-                slidesPerView={sliderPerView}
-                spaceBetween={spaceBetweenSlides}
-                navigation={enableSwiperNavigation}
-                freeMode={true}
-                modules={[FreeMode]}
-              >
-                {
-                  data &&
-                  data.map(meal => (
-                    meal.category === 'bebida' ?
-                      <SwiperSlide key={meal.id}>
-                        <Card
-                          onClickHandleFavorite={() => handleFavorite(meal)}
-                          id={meal.id}
-                          color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
-                          title={meal.title}
-                          description={meal.description}
-                          price={meal.price}
-                          image={`${api.defaults.baseURL}/files/${meal.image}`}
-                        />
-                      </SwiperSlide>
-                      : null
-                  ))
-                }
-              </Swiper>
-            </Cards>
+        <Cards>
+          <Swiper
+            slidesPerView={sliderPerView}
+            spaceBetween={spaceBetweenSlides}
+            navigation={enableSwiperNavigation}
+            freeMode={true}
+            modules={[FreeMode]}
+          >
+            {
+              data &&
+              data.map(meal => (
+                meal.category === 'bebida' ?
+                  <SwiperSlide key={meal.id}>
+                    <Card
+                      onClickHandleFavorite={() => handleFavorite(meal)}
+                      id={meal.id}
+                      color={favorites.map(favorite => favorite.meal_id).includes(meal.id) ? 'red' : ''}
+                      title={meal.title}
+                      description={meal.description}
+                      price={meal.price}
+                      image={`${api.defaults.baseURL}/files/${meal.image}`}
+                    />
+                  </SwiperSlide>
+                  : null
+              ))
+            }
+          </Swiper>
+        </Cards>
 
-          </Content>
+      </Content>
 
-          <Footer />
-        </>
+      <Footer />
 
-        :
-        <Menu
-          search={search}
-          setSearch={setSearch}
-          onClickHandleMenu={handleOpenMenu}
-        />
-      }
 
     </Container >
   )

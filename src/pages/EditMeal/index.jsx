@@ -137,123 +137,116 @@ export function EditMeal() {
 
   return (
     <Container>
+      <Menu
+        onClickHandleMenu={handleOpenMenu}
+        openMenu={openMenu}
+      />
 
-      {
-        !openMenu
-          ?
-          <>
-            <Header onClickHandleMenu={handleOpenMenu} />
+      <Header onClickHandleMenu={handleOpenMenu} data-menu-is-open={openMenu} />
 
-            <Content>
-              <BackButton to="/" />
+      <Content data-menu-is-open={openMenu}>
+        <BackButton to="/" />
 
-              <Form>
-                <h1>Editar prato</h1>
-                <h1>Editar prato</h1>
+        <Form>
+          <h1>Editar prato</h1>
+          <h1>Editar prato</h1>
 
-                <div>
-                  <div className="image">
-                    <label htmlFor="image">Imagem do prato</label>
-                    {
-                      !imageFile
-                        ?
-                        <>
-                          <label htmlFor="image"><FiUpload /> Selecione imagem para alterá-la</label>
-                          <label htmlFor="image"><FiUpload /> Selecione imagem</label>
-                        </>
-                        :
-                        <>
-                          <label htmlFor="image" className='image-label-filed'><FiUpload /> {imageFile.name}</label>
-                          <label htmlFor="image" className='image-label-filed'><FiUpload /> {imageFile.name}</label>
-                        </>
-                    }
-                    <Input
-                      placeholder="Selecione nova imagem do prato"
-                      type="file"
-                      id="image"
-                      accept="image/*"
-                      onChange={handleChangeImage}
-                    />
-                  </div>
+          <div>
+            <div className="image">
+              <label htmlFor="image">Imagem do prato</label>
+              {
+                !imageFile
+                  ?
+                  <>
+                    <label htmlFor="image"><FiUpload /> Selecione imagem para alterá-la</label>
+                    <label htmlFor="image"><FiUpload /> Selecione imagem</label>
+                  </>
+                  :
+                  <>
+                    <label htmlFor="image" className='image-label-filed'><FiUpload /> {imageFile.name}</label>
+                    <label htmlFor="image" className='image-label-filed'><FiUpload /> {imageFile.name}</label>
+                  </>
+              }
+              <Input
+                placeholder="Selecione nova imagem do prato"
+                type="file"
+                id="image"
+                accept="image/*"
+                onChange={handleChangeImage}
+              />
+            </div>
 
-                  <div className="name">
-                    <label htmlFor="title">Nome</label>
-                    <Input
-                      value={mealTitle}
-                      onChange={handleTitleText}
-                      placeholder={mealTitle}
-                      type="text"
-                      id="title"
-                    />
-                  </div>
+            <div className="name">
+              <label htmlFor="title">Nome</label>
+              <Input
+                value={mealTitle}
+                onChange={handleTitleText}
+                placeholder={mealTitle}
+                type="text"
+                id="title"
+              />
+            </div>
 
-                  <div className="category">
-                    <label htmlFor="category">Categoria</label>
-                    <SelectInput
-                      id="category"
-                      selectedOption={selectedOption}
-                      setSelectedOption={setSelectedOption}
-                    />
-                  </div>
-                </div>
+            <div className="category">
+              <label htmlFor="category">Categoria</label>
+              <SelectInput
+                id="category"
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+              />
+            </div>
+          </div>
 
-                <div>
-                  <div className="ingredients">
-                    <label htmlFor="ingredients">Ingredientes</label>
-                    <MultiSelectInput
-                      ingredients={ingredientsList}
-                      setIngredientsList={setIngredientsList}
-                    />
-                  </div>
+          <div>
+            <div className="ingredients">
+              <label htmlFor="ingredients">Ingredientes</label>
+              <MultiSelectInput
+                ingredients={ingredientsList}
+                setIngredientsList={setIngredientsList}
+              />
+            </div>
 
-                  <div className="price">
-                    <label htmlFor="price">Preço</label>
-                    <Input
-                      value={mealPrice}
-                      onChange={(e) => setMealPrice(e.target.value)}
-                      placeholder={mealPrice}
-                      type="number"
-                      id="price"
-                      icon={TbCurrencyReal}
-                    />
-                  </div>
-                </div>
+            <div className="price">
+              <label htmlFor="price">Preço</label>
+              <Input
+                value={mealPrice}
+                onChange={(e) => setMealPrice(e.target.value)}
+                placeholder={mealPrice}
+                type="number"
+                id="price"
+                icon={TbCurrencyReal}
+              />
+            </div>
+          </div>
 
-                <label htmlFor="description">Descrição</label>
-                <TextArea
-                  value={mealDescription}
-                  onChange={handleDescriptionText}
-                  placeholder={mealDescription}
-                />
-
-                <div className='btns'>
-                  {
-                    isDeleting
-                      ?
-                      <Button title="Carregando" icon={TailSpin} />
-                      :
-                      <Button title="Excluir prato" onClick={handleDelete} />
-                  }
-                  {
-                    isUpdating
-                      ?
-                      <Button title="Carregando" icon={TailSpin} />
-                      :
-                      <Button title="Salvar alterações" onClick={handleUpdate} />
-                  }
-                </div>
-
-              </Form>
-            </Content>
-
-            <Footer />
-          </>
-          :
-          <Menu
-            onClickHandleMenu={handleOpenMenu}
+          <label htmlFor="description">Descrição</label>
+          <TextArea
+            value={mealDescription}
+            onChange={handleDescriptionText}
+            placeholder={mealDescription}
           />
-      }
 
+          <div className='btns'>
+            {
+              isDeleting
+                ?
+                <Button title="Carregando" icon={TailSpin} />
+                :
+                <Button title="Excluir prato" onClick={handleDelete} />
+            }
+            {
+              isUpdating
+                ?
+                <Button title="Carregando" icon={TailSpin} />
+                :
+                <Button title="Salvar alterações" onClick={handleUpdate} />
+            }
+          </div>
+
+        </Form>
+      </Content>
+
+      <Footer />
 
     </Container>
   )

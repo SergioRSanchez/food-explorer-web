@@ -9,7 +9,7 @@ import { Footer } from '../Footer';
 
 import { Container, Header, Content } from './styles';
 
-export function Menu({ onClickHandleMenu, search, setSearch }) {
+export function Menu({ onClickHandleMenu, search, setSearch, openMenu }) {
   const navigate = useNavigate();
 
   const { signOut, user } = useAuth();
@@ -21,7 +21,7 @@ export function Menu({ onClickHandleMenu, search, setSearch }) {
 
   return (
     <>
-      <Container>
+      <Container data-menu-is-open={openMenu}>
         <Header>
           <p><FiX size={18} onClick={onClickHandleMenu} /></p>
           <span>Menu</span>

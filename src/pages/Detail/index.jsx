@@ -89,34 +89,34 @@ export function Detail() {
 
   return (
     <Container>
-      {!openMenu
-        ?
-        <>
-          <Header onClickHandleMenu={handleOpenMenu} />
 
-          <Content>
-            <BackButton to="/" />
+      <Menu onClickHandleMenu={handleOpenMenu} openMenu={openMenu} />
 
-            <Dish
-              title={mealTitle}
-              description={mealDescription}
-              ingredientsList={ingredientsList}
-              price={mealPrice}
-              totalPrice={totalPrice}
-              quantity={quantity}
-              increaseQuantity={increaseQuantity}
-              decreaseQuantity={decreaseQuantity}
-              image={image}
-              id={params.id}
-            />
-          </Content>
+      <Header
+        onClickHandleMenu={handleOpenMenu}
+        data-menu-is-open={openMenu}
+      />
+
+      <Content data-menu-is-open={openMenu}>
+        <BackButton to="/" />
+
+        <Dish
+          title={mealTitle}
+          description={mealDescription}
+          ingredientsList={ingredientsList}
+          price={mealPrice}
+          totalPrice={totalPrice}
+          quantity={quantity}
+          increaseQuantity={increaseQuantity}
+          decreaseQuantity={decreaseQuantity}
+          image={image}
+          id={params.id}
+        />
+      </Content>
 
 
-          <Footer />
-        </>
+      <Footer />
 
-        : <Menu onClickHandleMenu={handleOpenMenu} />
-      }
-    </Container>
+    </Container >
   )
 }

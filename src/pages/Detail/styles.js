@@ -7,9 +7,21 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+  }
+  }
 `;
 
 export const Content = styled.div`
+  &[data-menu-is-open="true"] {
+    display: none;
+  }
+
   margin-top: calc(11.4rem + 1.6rem + 2.1rem);
   margin-bottom: calc(5.4rem + 7.7rem);
   padding: 0 5.6rem;

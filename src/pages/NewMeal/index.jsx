@@ -8,6 +8,7 @@ import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 
 import { Header } from '../../components/Header';
+import { Menu } from '../../components/Menu';
 import { BackButton } from '../../components/BackButton';
 import { Input } from '../../components/Input';
 import { SelectInput } from '../../components/SelectInput';
@@ -25,6 +26,7 @@ export function NewMeal() {
   const navigate = useNavigate();
 
 
+  const [openMenu, setOpenMenu] = useState(false);
   const [mealTitle, setMealTitle] = useState('');
 
   const [selectedOption, setSelectedOption] = useState({});
@@ -40,6 +42,10 @@ export function NewMeal() {
 
 
   const [ingredientToAdd, setIngredientToAdd] = useState('');
+
+  function handleOpenMenu() {
+    setOpenMenu(!openMenu)
+  }
 
   function handleChangeImage(e) {
     const file = e.target.files[0];
@@ -73,9 +79,14 @@ export function NewMeal() {
 
   return (
     <Container>
-      <Header />
+      <Menu onClickHandleMenu={handleOpenMenu} openMenu={openMenu} />
 
-      <Content>
+      <Header
+        onClickHandleMenu={handleOpenMenu}
+        data-menu-is-open={openMenu}
+      />
+
+      <Content data-menu-is-open={openMenu}>
         <BackButton to="/" />
 
         <Form>

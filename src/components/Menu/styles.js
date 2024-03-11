@@ -5,29 +5,24 @@ export const Container = styled.div`
   flex-direction: column;
 
   margin: 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: absolute;
   width: 100vw;
-  top: 0;
+  height: 100vh;
   z-index: 60;
 
-  @keyframes appear {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
-
-  animation: appear 0.2s;
+  background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
   footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+  }
+
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-in-out;
+
+  &[data-menu-is-open="true"] {
+    transform: translateX(0);
   }
 `;
 
@@ -52,7 +47,8 @@ export const Header = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 3.6rem 2..8rem;
+  padding: 0 2..8rem;
+  margin-top: 3.6rem;
 
   button {
     display: flex;
