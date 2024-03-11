@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { FiMail, FiEye, FiEyeOff } from 'react-icons/fi';
-import { TailSpin } from 'react-loading-icons'
-
+import { TailSpin } from 'react-loading-icons';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/auth';

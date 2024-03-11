@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FiMail, FiUser, FiEye, FiEyeOff } from 'react-icons/fi';
+import { TailSpin } from 'react-loading-icons';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { api } from '../../services/api';
@@ -19,6 +20,8 @@ export function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   function handleShowPassword() {
     setShowPassword(!showPassword);
   }
@@ -28,6 +31,7 @@ export function SignUp() {
       return alert("Fill in all fields");
     }
 
+    setIsLoading(true);
     api.post("/users", { name, email, password }).then(() => {
       alert("User successfully registered!");
       navigate("/");
@@ -84,7 +88,13 @@ export function SignUp() {
           onKeyPress={onEnterKeyPress}
         />
 
-        <Button title="Criar conta" onClick={handleSignUp} />
+        {
+          isLoading
+            ?
+            <Button title="Carregando" icon={TailSpin} />
+            :
+            <Button title="Criar conta" onClick={handleSignUp} />
+        }
 
         <Link to="/">Já tenho uma conta</Link>
 
